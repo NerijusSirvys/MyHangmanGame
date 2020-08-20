@@ -129,11 +129,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Data\GameDbContext.cs" />
     <Compile Include="Enums\LevelDifficulty.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Managers\UserManager.cs" />
+    <Compile Include="Migrations\202008200554567_initial.cs" />
+    <Compile Include="Migrations\202008200554567_initial.designer.cs">
+      <DependentUpon>202008200554567_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008200558409_renamedTables.cs" />
+    <Compile Include="Migrations\202008200558409_renamedTables.designer.cs">
+      <DependentUpon>202008200558409_renamedTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CompleteLevel.cs" />
     <Compile Include="Models\Hint.cs" />
     <Compile Include="Models\Level.cs" />
@@ -154,6 +165,14 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202008200554567_initial.resx">
+      <DependentUpon>202008200554567_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008200558409_renamedTables.resx">
+      <DependentUpon>202008200558409_renamedTables.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

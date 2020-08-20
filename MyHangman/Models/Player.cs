@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MyHangman.Models
 {
-    public class Player
+    public class Player : IdentityUser
     {
         public int GameScore { get; set; }
         public int GoldenCoins { get; set; }
