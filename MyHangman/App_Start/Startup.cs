@@ -18,7 +18,7 @@ namespace MyHangman.App_Start
             app.UseCookieAuthentication(new Microsoft.Owin.Security.Cookies.CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/LogIn")
+                LoginPath = new PathString("/Account/Welcome")
             });
         }
     }

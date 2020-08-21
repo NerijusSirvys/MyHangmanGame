@@ -1,0 +1,42 @@
+﻿- Create welcome page
+	- User log in
+	- user registration
+
+- Create Account controller
+	- Log in function
+	- Register function
+
+- Create main page
+
+	- Display riddle section
+		> display riddle
+		> display hidden answer
+		> must be able to select individual letter
+
+	- Display hints section
+		> hidden hint boddy
+		> hint price
+			* first hint low cost
+			* second hint medium cost
+			* third hint high cost
+		> take hint cost of golden coins
+		> open hint must stay open untill level gets completed
+		> display 'Buy hint' button
+		> open hidden hint on 'Buy' button click
+		> disable 'Buy' button on click
+		> disable 'Buy' button on level completion
+		> disable 'Buy' button on game over
+
+	- Display keyboard
+		> hover animation
+		> click animation
+
+	- Display hangman image
+		> change image on each incorrect guess
+
+	- Display Statistics section
+		> username
+		> game score
+		> golden coins
+		> progress
+		> level difficulty
