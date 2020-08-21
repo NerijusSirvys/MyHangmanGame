@@ -1,10 +1,9 @@
-﻿
-<main class="welcome-page">
-    <section class="greeting">
+﻿<main class="welcome-page">
+    <section class="greeting-section">
         <h1>Welcome to Hangman game</h1>
-        <div class="welcome-page-btn-wrapper">
-            @Html.ActionLink("Log In", "LogIn", "Account", new { @class = "welcome-page-btn" })
-            @Html.ActionLink("Register", "Register", "Account", new { @class = "welcome-page-btn" })
+        <div class="btn-wrapper">
+            @Html.ActionLink("Log In", "LogIn", "Account", new { @class = "btn" })
+            @Html.ActionLink("Register", "Register", "Account", new { @class = "btn" })
         </div>
     </section>
 </main>

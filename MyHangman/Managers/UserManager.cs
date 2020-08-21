@@ -21,7 +21,7 @@ namespace MyHangman.Managers
             manager.UserValidator = new UserValidator<Player>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
-                RequireUniqueEmail = true
+                RequireUniqueEmail = false
             };
 
             manager.PasswordValidator = new PasswordValidator

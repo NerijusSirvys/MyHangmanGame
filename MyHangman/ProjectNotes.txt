@@ -1,6 +1,6 @@
-﻿- Create welcome page
-	- User log in
-	- user registration
+﻿- Create welcome page	<<<DONE>>>
+	- User log in		<<<DONE>>>
+	- user registration	<<<DONE>>>
 
 - Create Account controller
 	- Log in function

@@ -1,22 +1,48 @@
-﻿h1 {
-    font-size: 2.5rem;
+﻿h1,
+label {
+    font-size: 4.5rem;
     letter-spacing: 3px;
     font-family: 'Fredericka the Great', cursive;
     font-weight: 500;
     text-align: center;
 }
 
-.welcome-page-btn{
+.welcome-page,
+.register-page,
+.status-page {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 100vh;
+    margin: auto;
+}
+
+.greeting-section,
+.register-section,
+.status-section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* <<< BUTTON >>> */
+.btn-wrapper {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
     font-size: 1.2rem;
     padding-left: 3.5rem;
     padding-right: 3.5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
-
     box-shadow: inset 0px 1px 0px 0px #ffffff;
     background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
     background-color: #ededed;
-
     border: solid 1px black;
     border-radius: 5px;
     text-decoration: none;
@@ -24,33 +50,47 @@
     cursor: default;
 }
 
-    .welcome-page-btn:hover {
+    .btn:hover {
         background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
         background-color: #dfdfdf;
     }
 
-    .welcome-page-btn:active {
+    .btn:active {
         position: relative;
         top: 1px;
     }
 
-
-.welcome-page{
+/* <<< TEXT INPUT BOXES >>>*/
+.input-wrapper {
     display: flex;
-    justify-content: center;
-
-    width: 80%;
-    height: 100vh;
-    margin: auto;
-}
-.welcome-page-btn-wrapper{
-    display:flex;
-    justify-content: space-around;
-}
-
-.greeting {
-    display: flex;
-    justify-content: center;
     flex-direction: column;
-  
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+}
+
+    .input-wrapper label {
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+        font-weight: 300;
+    }
+
+    .input-wrapper input {
+        height: 2.5rem;
+        border: 0.5px solid black;
+        border-radius: 5px;
+        font-size: 1.5rem;
+        font-family: 'Thasadith', sans-serif;
+        font-weight: 400;
+    }
+
+        .input-wrapper input:focus {
+            box-shadow: 10px 10px 15px 3px rgba(0, 0, 0, 0.4);
+            outline: none;
+        }
+
+input[type="password"] {
+    font: small-caption;
+    font-size: 26px;
 }

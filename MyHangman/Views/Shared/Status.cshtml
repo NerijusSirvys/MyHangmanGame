@@ -1,0 +1,21 @@
+﻿@model MyHangman.Services.EventState
+
+<main class="status-page">
+    <section class="status-section">
+        <h1>@Model.Message</h1>
+        @if (Model.IsSuccess)
+        {
+            <div class="btn-wrapper">
+                @Html.ActionLink("Start Game", "Start", "Home", new { @class = "btn" })
+            </div>
+        }
+        else
+        {
+            <div class="btn-wrapper">
+                @Html.ActionLink("Retry", "Register", "Account", null, new { @class = "btn" })
+                @Html.ActionLink("Cancell", "Welcome", "Account", null, new { @class = "btn" })
+            </div>
+        }
+    </section>
+</main>
+
