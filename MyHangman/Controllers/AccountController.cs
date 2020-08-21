@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using MyHangman.Managers;
 using MyHangman.Models;
 using MyHangman.Services;
 using MyHangman.ViewModels;
 using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -21,6 +23,15 @@ namespace MyHangman.Controllers
             }
         }
 
+        private IAuthenticationManager AuthManager 
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            } 
+        }
+
+
         [HttpGet]
         public ActionResult Welcome()
         {
@@ -33,6 +44,30 @@ namespace MyHangman.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> LogIn(LoginVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            // Looks at the database if provided pasword matches user 
+            Player player = await UserManager.FindAsync(model.UserName, model.Password);
+            if(player == null)
+            {
+                EventState eventState = new EventState { IsSuccess = false, Message = "Incorrect pasword or user name" };
+                return View("Status", eventState);
+            }
+
+            ClaimsIdentity identity = await UserManager.CreateIdentityAsync(player, DefaultAuthenticationTypes.ApplicationCookie);
+            AuthManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
+           
+            // TODO map player to game view model
+            return RedirectToAction("Index", "Home", player);
+        }
+
         [HttpGet]
         public ActionResult Register()
         {
@@ -43,42 +78,25 @@ namespace MyHangman.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterVM model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-
-                Player player = new Player
-                {
-                    UserName = model.UserName,
-                    GoldenCoins = 0,
-                    GameScore = 0
-                };
-
-                IdentityResult result = IdentityResult.Failed();
-                try
-                {
-                    result = await UserManager.CreateAsync(player, model.Password);
-                }
-                catch (Exception ex)
-                {
-                    throw new HttpException(ex.Message);
-                }
-
-                EventState eventState = new EventState();
-                if (result.Succeeded)
-                {
-                    eventState.Message = "Registration Complete";
-                    eventState.IsSuccess = true;
-                }
-                else
-                {
-                    eventState.Message = "An error occured while adding new player";
-                    eventState.IsSuccess = false;
-                }
-
-                return View("Status", eventState);
+                return View(model);
             }
 
-            return View(model);
+            IdentityResult result = await UserManager.CreateAsync(new Player { UserName = model.UserName }, model.Password);
+
+            EventState eventState = EventState.GetEventState(result);
+
+            return View("Status", eventState);
+      
+        }
+
+        [HttpGet]
+        public ActionResult LogOut()
+        {
+            AuthManager.SignOut();
+
+            return RedirectToAction("Welcome");
         }
     }
 }

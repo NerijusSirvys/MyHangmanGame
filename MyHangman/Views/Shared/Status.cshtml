@@ -6,16 +6,14 @@
         @if (Model.IsSuccess)
         {
             <div class="btn-wrapper">
-                @Html.ActionLink("Start Game", "Start", "Home", new { @class = "btn" })
+                @Html.ActionLink("Start Game", "Index", "Home", new { @class = "btn" })
             </div>
         }
         else
         {
             <div class="btn-wrapper">
-                @Html.ActionLink("Retry", "Register", "Account", null, new { @class = "btn" })
-                @Html.ActionLink("Cancell", "Welcome", "Account", null, new { @class = "btn" })
+                @Html.ActionLink("Back", "Welcome", "Account", null, new { @class = "btn" })
             </div>
         }
     </section>
 </main>
-

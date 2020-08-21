@@ -8,5 +8,11 @@ namespace MyHangman.Models
         public int GameScore { get; set; }
         public int GoldenCoins { get; set; }
         public List<CompleteLevel> CompleteLevels { get; set; }
+
+        public Player()
+        {
+            GameScore = 0;
+            GoldenCoins = 0;
+        }
     }
 }

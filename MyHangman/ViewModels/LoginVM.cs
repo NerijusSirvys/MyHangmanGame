@@ -2,9 +2,8 @@
 
 namespace MyHangman.ViewModels
 {
-    public class RegisterVM
+    public class LoginVM
     {
-
         [Required]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
@@ -13,12 +12,5 @@ namespace MyHangman.ViewModels
         [DataType(DataType.Password)]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "Password must be atleast 5 and characters long")]
         public string Password { get; set; }
-
-        [Required]
-        [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Passwords does not match")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "Password must be atleast 5 and characters long")]
-        [Display(Name = "Confirm Password")]
-        public string ConfirmPassword { get; set; }
     }
 }
