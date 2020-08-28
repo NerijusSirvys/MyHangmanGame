@@ -124,12 +124,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\CSS\Styles.css" />
+    <Content Include="Content\CSS\All-styles.css" />
+    <Content Include="Content\CSS\Button-styles.css" />
+    <Content Include="Content\CSS\Game-grid-styles.css" />
+    <Content Include="Content\CSS\Global-styles.css" />
+    <Content Include="Content\CSS\Normalize.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\hangman frame.png" />
     <Content Include="ProjectNotes.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FiltersConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />

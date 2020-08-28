@@ -1,0 +1,50 @@
+﻿
+
+/*-------------------\
+     GENERAL STYLES
+\-------------------*/
+
+.content--center {
+    display: flex;
+    justify-content: center;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.6em;
+}
+
+.content--left {
+    align-items: flex-start;
+}
+
+header p{
+    margin-left: 50px;
+}
+
+/*-------------------\
+     INPUT STYLES
+\-------------------*/
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    max-width: 400px;
+    margin: 45px auto;
+    height: 3em;
+    font-size: 1.3em;
+}
+
+    .input-wrapper input {
+        border: 0.5px solid black;
+        border-radius: 5px;
+        font-family: 'Thasadith', sans-serif;
+        height: 2em
+    }
+
+        .input-wrapper input:focus {
+            box-shadow: 10px 10px 15px 3px rgba(0, 0, 0, 0.4);
+            outline: none;
+        }
+

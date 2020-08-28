@@ -1,3 +1,4 @@
+using MyHangman.App_Start;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -9,6 +10,7 @@ namespace MyHangman
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            FiltersConfig.RegisterGlobalFilters(GlobalFilters.Filters);
         }
     }
 }

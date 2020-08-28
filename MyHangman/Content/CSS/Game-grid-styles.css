@@ -1,0 +1,36 @@
+﻿.hint-section {
+    grid-area: hints;
+    align-items: flex-start;
+}
+
+    .hint-section p {
+    }
+
+.riddle-section {
+    grid-area: riddle;
+}
+
+.keyboard-section {
+    grid-area: keyboard;
+}
+
+.image-section {
+    grid-area: image;
+}
+
+    .image-section img {
+        height: auto;
+        width: 100%;
+    }
+
+.statistics-section {
+    grid-area: statistics;
+}
+
+.main-grid-area {
+    display: grid;
+    grid-template-columns: 60% 35%;
+    grid-template-rows: auto;
+    column-gap: 40px;
+    grid-template-areas: "header header" "riddle image" "hints statistics" "keyboard statistics";
+}

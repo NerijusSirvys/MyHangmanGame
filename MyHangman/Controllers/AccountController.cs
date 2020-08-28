@@ -5,7 +5,6 @@ using MyHangman.Managers;
 using MyHangman.Models;
 using MyHangman.Services;
 using MyHangman.ViewModels;
-using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -13,6 +12,7 @@ using System.Web.Mvc;
 
 namespace MyHangman.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private UserManager UserManager
@@ -23,14 +23,13 @@ namespace MyHangman.Controllers
             }
         }
 
-        private IAuthenticationManager AuthManager 
+        private IAuthenticationManager AuthManager
         {
             get
             {
                 return HttpContext.GetOwinContext().Authentication;
-            } 
+            }
         }
-
 
         [HttpGet]
         public ActionResult Welcome()
@@ -53,9 +52,9 @@ namespace MyHangman.Controllers
                 return View(model);
             }
 
-            // Looks at the database if provided pasword matches user 
+            // Looks at the database if there is user with provided username and password
             Player player = await UserManager.FindAsync(model.UserName, model.Password);
-            if(player == null)
+            if (player == null)
             {
                 EventState eventState = new EventState { IsSuccess = false, Message = "Incorrect pasword or user name" };
                 return View("Status", eventState);
@@ -63,9 +62,9 @@ namespace MyHangman.Controllers
 
             ClaimsIdentity identity = await UserManager.CreateIdentityAsync(player, DefaultAuthenticationTypes.ApplicationCookie);
             AuthManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
-           
+
             // TODO map player to game view model
-            return RedirectToAction("Index", "Home", player);
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
@@ -88,7 +87,6 @@ namespace MyHangman.Controllers
             EventState eventState = EventState.GetEventState(result);
 
             return View("Status", eventState);
-      
         }
 
         [HttpGet]

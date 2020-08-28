@@ -1,10 +1,10 @@
 ﻿@model MyHangman.ViewModels.LoginVM
 
-<main class="login-page">
+<main class="content--center">
     <section class="login-section">
         <h1>Log In to existing account</h1>
 
-        @using (Html.BeginForm("LogIn", "Account", FormMethod.Post))
+        @using (Html.BeginForm("LogIn", "Account", FormMethod.Post, new { autocomplete = "off" }))
         {
             @Html.AntiForgeryToken()
             <div class="input-wrapper">

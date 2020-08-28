@@ -1,7 +1,85 @@
 ﻿@using Microsoft.AspNet.Identity
 @{
-    
+
     ViewBag.Title = "Index";
 }
 
+<main class="main-grid-area">
+    <header class="header">
+        <p>Hello @User.Identity.Name</p>
+    </header>
 
+    <section class="riddle-section">
+        <h2>This is the riddle text</h2>
+        <h3>answer</h3>
+    </section>
+
+    <section class="hint-section">
+        <div class="hint">
+            <p>Hint to open 1</p>
+        </div>
+        <div class="hint">
+            <p>Hint to open 2</p>
+        </div>
+        <div class="hint">
+            <p>Hint to open 3</p>
+        </div>
+    </section>
+
+    <section class="keyboard-section">
+        @using (Html.BeginForm("SubmitKey", "Home", FormMethod.Post))
+        {
+            <div class="key-row">
+                <input class="btn key-btn" type="submit" name="key" value="Q" />
+                <input class="btn key-btn" type="submit" name="key" value="W" />
+                <input class="btn key-btn" type="submit" name="key" value="E" />
+                <input class="btn key-btn" type="submit" name="key" value="R" />
+                <input class="btn key-btn" type="submit" name="key" value="T" />
+                <input class="btn key-btn" type="submit" name="key" value="Y" />
+                <input class="btn key-btn" type="submit" name="key" value="U" />
+                <input class="btn key-btn" type="submit" name="key" value="I" />
+                <input class="btn key-btn" type="submit" name="key" value="O" />
+                <input class="btn key-btn" type="submit" name="key" value="P" />
+            </div>
+            <div class="key-row">
+                <input class="btn key-btn" type="submit" name="key" value="A" />
+                <input class="btn key-btn" type="submit" name="key" value="S" />
+                <input class="btn key-btn" type="submit" name="key" value="D" />
+                <input class="btn key-btn" type="submit" name="key" value="F" />
+                <input class="btn key-btn" type="submit" name="key" value="G" />
+                <input class="btn key-btn" type="submit" name="key" value="H" />
+                <input class="btn key-btn" type="submit" name="key" value="J" />
+                <input class="btn key-btn" type="submit" name="key" value="K" />
+                <input class="btn key-btn" type="submit" name="key" value="L" />
+            </div>
+            <div class="key-row">
+                <input class="btn key-btn" type="submit" name="key" value="Z" />
+                <input class="btn key-btn" type="submit" name="key" value="X" />
+                <input class="btn key-btn" type="submit" name="key" value="C" />
+                <input class="btn key-btn" type="submit" name="key" value="V" />
+                <input class="btn key-btn" type="submit" name="key" value="B" />
+                <input class="btn key-btn" type="submit" name="key" value="N" />
+                <input class="btn key-btn" type="submit" name="key" value="M" />
+            </div>
+        }
+    </section>
+
+    <section class="image-section">
+        <img src="~/Images/hangman frame.png" alt="Alternate Text" />
+    </section>
+
+    <section class="statistics-section content--left">
+        <div>
+            <p>Game Score: <span>154225</span></p>
+        </div>
+        <div>
+            <p>Golden Coins: <span>250</span></p>
+        </div>
+        <div>
+            <p>Level Difficulty: <span>Easy</span></p>
+        </div>
+        <div>
+            <p>Progress: <span>1 of 10</span></p>
+        </div>
+    </section>
+</main>

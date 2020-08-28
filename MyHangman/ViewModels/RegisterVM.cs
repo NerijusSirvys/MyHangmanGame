@@ -4,7 +4,6 @@ namespace MyHangman.ViewModels
 {
     public class RegisterVM
     {
-
         [Required]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
