@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@model MyHangman.ViewModels.GameVM
 @{
 
     ViewBag.Title = "Index";
@@ -10,24 +11,16 @@
     </header>
 
     <section class="riddle-section">
-        <h2>This is the riddle text</h2>
-        <h3>answer</h3>
+        <h2>@Model.Riddle</h2>
+        <h3>@Html.Partial("_HiddenAnswer")</h3>
     </section>
 
     <section class="hint-section">
-        <div class="hint">
-            <p>Hint to open 1</p>
-        </div>
-        <div class="hint">
-            <p>Hint to open 2</p>
-        </div>
-        <div class="hint">
-            <p>Hint to open 3</p>
-        </div>
+      @Html.Partial("_Hints")
     </section>
 
     <section class="keyboard-section">
-        @using (Html.BeginForm("SubmitKey", "Home", FormMethod.Post))
+        @using (Html.BeginForm("GuessLetter", "Home", FormMethod.Post))
         {
             <div class="key-row">
                 <input class="btn key-btn" type="submit" name="key" value="Q" />
@@ -61,6 +54,24 @@
                 <input class="btn key-btn" type="submit" name="key" value="N" />
                 <input class="btn key-btn" type="submit" name="key" value="M" />
             </div>
+
+            @Html.HiddenFor(x => x.Riddle)
+            @Html.HiddenFor(x => x.HiddenAnswer)
+            @Html.HiddenFor(x => x.OpenAnswer)
+            @Html.HiddenFor(x => x.GameScore)
+            @Html.HiddenFor(x => x.GoldenCoins)
+            @Html.HiddenFor(x => x.IsLoss)
+            @Html.HiddenFor(x => x.IsWin)
+            @Html.HiddenFor(x => x.LevelDifficulty)
+            @Html.HiddenFor(x => x.NumberOfCorrectGuesses)
+            @Html.HiddenFor(x => x.NumberOfGuessesLeft)
+            @Html.HiddenFor(x => x.Progress)
+            for (int i = 0; i < Model.Hints.Count(); i++)
+            {
+                @Html.HiddenFor(x => x.Hints[i].ID);
+                @Html.HiddenFor(x => x.Hints[i].IsOpen);
+                @Html.HiddenFor(x => x.Hints[i].OpenHint);
+            }
         }
     </section>
 
@@ -70,16 +81,16 @@
 
     <section class="statistics-section content--left">
         <div>
-            <p>Game Score: <span>154225</span></p>
+            <p>@Html.LabelFor(x=>x.GameScore): <span>@Html.DisplayFor(x=>x.GameScore)</span></p>
         </div>
         <div>
-            <p>Golden Coins: <span>250</span></p>
+            <p>@Html.LabelFor(x => x.GoldenCoins): <span>@Html.DisplayFor(x => x.GoldenCoins)</span></p>
         </div>
         <div>
-            <p>Level Difficulty: <span>Easy</span></p>
+            <p>@Html.LabelFor(x => x.LevelDifficulty): <span>@Html.DisplayFor(x => x.LevelDifficulty)</span></p>
         </div>
         <div>
-            <p>Progress: <span>1 of 10</span></p>
+            <p> @Html.LabelFor(x => x.Progress): <span>@Html.DisplayFor(x => x.Progress)</span></p>
         </div>
     </section>
 </main>

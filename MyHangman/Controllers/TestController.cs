@@ -14,5 +14,16 @@ namespace MyHangman.Controllers
             EventState stateFailed = new EventState { IsSuccess = false, Message = "Error. Registration cancelled" };
             return View("Status", stateSuccess);
         }
+
+        public ActionResult GameOverPage()
+        {
+            EventState eventState = new EventState
+            {
+                IsSuccess = false,
+                Message = "You run out of guesses. Game Over..."
+            };
+
+            return View("Status", eventState);
+        }
     }
 }

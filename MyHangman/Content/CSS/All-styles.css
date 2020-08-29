@@ -1,6 +1,4 @@
-﻿
-
-/*-------------------\
+﻿/*-------------------\
      GENERAL STYLES
 \-------------------*/
 
@@ -18,14 +16,19 @@
     align-items: flex-start;
 }
 
-header p{
+header p {
     margin-left: 50px;
 }
 
+.span-letters {
+    font-size: 3rem;
+    letter-spacing: normal;
+    padding: 10px;
+    margin: 0 -10px;
+}
 /*-------------------\
      INPUT STYLES
 \-------------------*/
-
 .input-wrapper {
     display: flex;
     flex-direction: column;
@@ -39,7 +42,7 @@ header p{
     .input-wrapper input {
         border: 0.5px solid black;
         border-radius: 5px;
-        font-family: 'Thasadith', sans-serif;
+        /*font-family: 'Thasadith', sans-serif;*/
         height: 2em
     }
 
@@ -47,4 +50,3 @@ header p{
             box-shadow: 10px 10px 15px 3px rgba(0, 0, 0, 0.4);
             outline: none;
         }
-

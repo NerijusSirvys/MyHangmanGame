@@ -8,7 +8,10 @@ body {
     width: 80%;
     height: 100vh;
     margin: auto;
-    background-color: #808080
+    background-color: #808080;
+    font-family: 'Thasadith', sans-serif
+
+
 }
 
 header {
@@ -68,8 +71,10 @@ h3 {
     font-size: 4em;
     font-weight: 500;
     color: #494447;
-    letter-spacing: 1.2rem;
     font-family: 'Fredericka the Great', cursive;
     margin-bottom: 0;
     margin-top: 0;
+
+    width: max-content;
+   
 }

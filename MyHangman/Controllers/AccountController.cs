@@ -63,8 +63,7 @@ namespace MyHangman.Controllers
             ClaimsIdentity identity = await UserManager.CreateIdentityAsync(player, DefaultAuthenticationTypes.ApplicationCookie);
             AuthManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
 
-            // TODO map player to game view model
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("BeginNewLevel", "Home");
         }
 
         [HttpGet]

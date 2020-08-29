@@ -3,15 +3,15 @@
 	- user registration	<<<DONE>>>
 
 - Create Account controller
-	- Log in function
-	- Register function
+	- Log in function		<<<DONE>>>
+	- Register function		<<<DONE>>>
 
-- Create main page
+- Create main page		<<<DONE>>>
 
 	- Display riddle section
-		> display riddle
-		> display hidden answer
-		> must be able to select individual letter
+		> display riddle		<<<DONE>>>
+		> display hidden answer		<<<DONE>>>
+		> must be able to select individual letter		<<<ongoing>>>
 
 	- Display hints section
 		> hidden hint boddy

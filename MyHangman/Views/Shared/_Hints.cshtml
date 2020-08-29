@@ -1,0 +1,26 @@
+﻿@model MyHangman.ViewModels.GameVM
+
+
+@foreach (var item in Model.Hints)
+{
+
+    if (item.IsOpen)
+    {
+        <div class="hint">
+            <p>@item.OpenHint</p>
+        </div>
+    }
+    else
+    {
+        <div class="hint">
+            <p>@item.HiddenHint</p>
+        </div>
+    }
+
+}
+
+
+
+
+
+

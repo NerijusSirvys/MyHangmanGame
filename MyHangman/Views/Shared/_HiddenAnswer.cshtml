@@ -1,0 +1,7 @@
+﻿@model MyHangman.ViewModels.GameVM
+
+@for (int i = 0; i < Model.HiddenAnswer.Length; i++)
+{
+    <span class="span-letters">@Html.DisplayFor(x => x.HiddenAnswer[i])</span>
+}
+
