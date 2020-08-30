@@ -1,14 +1,17 @@
 ﻿using MyHangman.Enums;
 using MyHangman.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace MyHangman.Services
 {
     public static class GameEngine
     {
-        // value is 7 due to number of hangman pictures to be replaced untill game over
-        public static int NumberOfAvailableGuesses { get { return 7; } }
+        // value is 6 due to number of hangman pictures to be replaced untill game over
+        public static int NumberOfAvailableGuesses { get { return 6; } }
 
         public static void AddWinToPlayer(string playerID, int levelID)
         {
@@ -28,6 +31,13 @@ namespace MyHangman.Services
             int totalNumOfLevels = dataAccess.GetNumberOfLevels();
 
             return $"{completedLevels + 1} of {totalNumOfLevels}";
+        }
+
+        public static Level GetLevelByID(int levelID)
+        {
+            DataAccess dataAccess = new DataAccess();
+
+            return dataAccess.GetLevelByID(levelID);
         }
 
         public static bool CheckForLoss(int numberOfGuessesLeft)
@@ -106,6 +116,52 @@ namespace MyHangman.Services
             }
 
             return numberOfGuessesLeft;
+        }
+
+        public static List<int> LoadLevelSet(List<CompleteLevel> completeLevels)
+        {
+            
+
+            List<Level> incompleteLevels = GetAllIncompleteLevels(completeLevels);
+
+            List<Level> sameDifficultyLevels = new List<Level>();
+
+            List<int> requiredLevels = new List<int>();
+
+            int levelDifficultyNumVal = 0;
+
+            while (sameDifficultyLevels.Count == 0)
+            {
+                sameDifficultyLevels = incompleteLevels.Where(x => x.Difficulty == (LevelDifficulty)levelDifficultyNumVal).ToList();
+                levelDifficultyNumVal++;
+            }
+
+            foreach (var item in sameDifficultyLevels)
+            {
+                requiredLevels.Add(item.ID);
+            }
+
+
+            return requiredLevels;
+        }
+
+        private static List<Level> GetAllIncompleteLevels(List<CompleteLevel> completeLevels)
+        {
+            DataAccess dataAccess = new DataAccess();
+            List<Level> allLevels = dataAccess.GetAllLevels();
+            List<Level> incompleteLevels = new List<Level>();
+
+            foreach (var level in allLevels)
+            {
+                CompleteLevel completeLevel = completeLevels.Where(x => x.LevelID == level.ID).SingleOrDefault();
+
+                if (completeLevel == null)
+                {
+                    incompleteLevels.Add(level);
+                }
+            }
+
+            return incompleteLevels;
         }
     }
 }

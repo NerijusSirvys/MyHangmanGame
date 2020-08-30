@@ -1,12 +1,14 @@
 ﻿.hint-section {
     grid-area: hints;
     align-items: flex-start;
+    margin: 0;
 }
 
 
 
 .riddle-section {
     grid-area: riddle;
+    margin: 0;
 }
 
 .keyboard-section {
@@ -18,7 +20,7 @@
 }
 
     .image-section img {
-        height: 200px;
+        height: 350px;
         width: auto;
     }
 

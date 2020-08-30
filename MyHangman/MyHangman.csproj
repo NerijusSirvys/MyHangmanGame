@@ -132,7 +132,13 @@
     <Content Include="Content\CSS\Global-styles.css" />
     <Content Include="Content\CSS\Normalize.css" />
     <Content Include="Global.asax" />
-    <Content Include="Images\hangman frame.png" />
+    <Content Include="Images\hangman-step-6.png" />
+    <Content Include="Images\hangman-step-5.png" />
+    <Content Include="Images\hangman-step-4.png" />
+    <Content Include="Images\hangman-step-3.png" />
+    <Content Include="Images\hangman-step-2.png" />
+    <Content Include="Images\hangman-step-1.png" />
+    <Content Include="Images\hangman-step-0.png" />
     <Content Include="ProjectNotes.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -168,6 +174,7 @@
     <Compile Include="Services\EventState.cs" />
     <Compile Include="Services\GameEngine.cs" />
     <Compile Include="Services\Mapper.cs" />
+    <Compile Include="ViewModels\GameState.cs" />
     <Compile Include="ViewModels\GameVM.cs" />
     <Compile Include="ViewModels\HintVM.cs" />
     <Compile Include="ViewModels\LoginVM.cs" />
@@ -188,6 +195,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Hints.cshtml" />
     <Content Include="Views\Shared\_HiddenAnswer.cshtml" />
+    <Content Include="Views\Home\GameMessage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -197,7 +205,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202008200554567_initial.resx">

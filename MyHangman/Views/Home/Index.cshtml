@@ -1,10 +1,13 @@
 ﻿@using Microsoft.AspNet.Identity
+
 @model MyHangman.ViewModels.GameVM
+
 @{
 
     ViewBag.Title = "Index";
-}
 
+    string path = $"~/Images/hangman-step-{@Model.NumberOfGuessesLeft}.png";
+}
 <main class="main-grid-area">
     <header class="header">
         <p>Hello @User.Identity.Name</p>
@@ -55,6 +58,7 @@
                 <input class="btn key-btn" type="submit" name="key" value="M" />
             </div>
 
+            @Html.HiddenFor(x=>x.LevelID)
             @Html.HiddenFor(x => x.Riddle)
             @Html.HiddenFor(x => x.HiddenAnswer)
             @Html.HiddenFor(x => x.OpenAnswer)
@@ -75,9 +79,10 @@
         }
     </section>
 
+
     <section class="image-section">
-        <img src="~/Images/hangman frame.png" alt="Alternate Text" />
-    </section>
+        <img src=@Url.Content(path) alt="Alternate Text" />
+    </section> 
 
     <section class="statistics-section content--left">
         <div>

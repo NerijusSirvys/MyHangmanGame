@@ -1,0 +1,21 @@
+﻿@model MyHangman.ViewModels.GameState
+
+<main class="content--center">
+    <section class="section-status">
+        <h1>@Model.Message</h1>
+        @if (Model.IsWin)
+        {
+            <div class="btn-wrapper">
+                @Html.ActionLink("Next", "BeginNewLevel", "Home", new { @class = "btn" })
+            </div>
+        }
+        
+        @if(Model.IsLoss)
+        {
+            <img src="~/Images/hangman-step-0.png" height="350px" alt="Alternate Text" />
+            <div class="btn-wrapper">
+                @Html.ActionLink("Finish", "Welcome", "Account", null, new { @class = "btn" })
+            </div>
+        }
+    </section>
+</main>

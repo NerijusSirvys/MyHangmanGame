@@ -1,6 +1,8 @@
 ﻿using MyHangman.Data;
 using MyHangman.Enums;
 using MyHangman.Models;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -36,6 +38,19 @@ namespace MyHangman.Services
         public void Save()
         {
             context.SaveChanges();
+        }
+
+        public List<Level> GetAllLevels()
+        {
+            return context.Levels.ToList();
+        }
+
+        public Level GetLevelByID(int levelID)
+        {
+            return context.Levels.Include(x=>x.Hints)
+                                 .Include(x=>x.OpenHints)
+                                 .Where(x => x.ID == levelID)
+                                 .SingleOrDefault();
         }
     }
 }

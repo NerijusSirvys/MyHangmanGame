@@ -1,0 +1,27 @@
+[
+  {
+    "$type": "VSToDoList.Models.Task, VSToDoList",
+    "Name": "Start new game by getting all levels that current player have not completed yet",
+    "IsDone": false,
+    "IsExpanded": true,
+    "SubTasks": [
+      {
+        "$type": "VSToDoList.Models.Task, VSToDoList",
+        "Name": "new game must start with lower possible difficulty ",
+        "IsDone": false,
+        "IsExpanded": false,
+        "SubTasks": [],
+        "Status": 2
+      },
+      {
+        "$type": "VSToDoList.Models.Task, VSToDoList",
+        "Name": "if there is no more awailable levels with the same difficulty, new set with one difficulty up will be loaded",
+        "IsDone": false,
+        "IsExpanded": false,
+        "SubTasks": [],
+        "Status": 2
+      }
+    ],
+    "Status": 2
+  }
+]
