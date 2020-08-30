@@ -3,7 +3,9 @@ using MyHangman.Enums;
 using MyHangman.Models;
 using MyHangman.Services;
 using MyHangman.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace MyHangman.Controllers
@@ -11,22 +13,20 @@ namespace MyHangman.Controllers
     public class HomeController : Controller
     {
 
-        private List<int> LevelSet { get; set; }
+        private List<int> LevelSetIDs { get; set; }
 
         public HomeController()
         {
-            LevelSet = new List<int>();
+            LevelSetIDs = new List<int>();
         }
 
-        // GET: Home
         public ActionResult BeginNewLevel()
         {
             Player player = GameEngine.GetPlayer(User.Identity.GetUserId());
 
-            LevelSet = GameEngine.LoadLevelSet(player.CompleteLevels);
+            Level level = GameEngine.GetRandomLevel(LevelSetIDs, player.CompleteLevels);
 
-            // TODO randimize level feed to game
-            Level level = GameEngine.GetLevelByID(LevelSet[0]);
+            LevelSetIDs.Remove(level.ID);
 
             GameVM viewModel = Mapper.MapGameVM(player, level);
 

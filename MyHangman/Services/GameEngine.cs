@@ -3,7 +3,6 @@ using MyHangman.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace MyHangman.Services
@@ -21,6 +20,25 @@ namespace MyHangman.Services
             player.CompleteLevels.Add(new CompleteLevel { LevelID = levelID });
 
             dataAccess.Save();
+        }
+
+        public static Level GetRandomLevel(IEnumerable<int> levelSetIDs, IEnumerable<CompleteLevel> completeLevels)
+        {
+            Random random = new Random();
+
+            // .Any() returns true if collection have any members
+            if (!levelSetIDs.Any())
+            {
+                levelSetIDs = LoadLevelSet(completeLevels);
+            }
+
+            int index = random.Next(0, levelSetIDs.Count() - 1);
+
+            int levelID = levelSetIDs.ElementAtOrDefault(index);
+
+            Level level = GetLevelByID(levelID);
+
+            return level;
         }
 
         public static string CalculateGameProgress(Player player)
@@ -118,19 +136,29 @@ namespace MyHangman.Services
             return numberOfGuessesLeft;
         }
 
-        public static List<int> LoadLevelSet(List<CompleteLevel> completeLevels)
+        // Load set of available levels that player have not completed yet with same difficulty starting from lowest
+        public static IEnumerable<int> LoadLevelSet(IEnumerable<CompleteLevel> completeLevels)
         {
-            
+            IEnumerable<Level> incompleteLevels = GetAllIncompleteLevels(completeLevels);
 
-            List<Level> incompleteLevels = GetAllIncompleteLevels(completeLevels);
+            IEnumerable<int> requiredLevels = GetSameDifficultyLevelIDs(incompleteLevels);
 
-            List<Level> sameDifficultyLevels = new List<Level>();
+            return requiredLevels;
+        }
 
+        // returns ID's of all incomplete levels that have required difficulty level
+        private static List<int> GetSameDifficultyLevelIDs(IEnumerable<Level> incompleteLevels)
+        {
             List<int> requiredLevels = new List<int>();
+
+            IEnumerable<Level> sameDifficultyLevels = new List<Level>();
 
             int levelDifficultyNumVal = 0;
 
-            while (sameDifficultyLevels.Count == 0)
+            // .Any() returns true if collection have any members
+            // runs through all incomplete levels looking for same difficulty levels
+            // if no level is available, it increases difficulty by one and searches again
+            while (!sameDifficultyLevels.Any())
             {
                 sameDifficultyLevels = incompleteLevels.Where(x => x.Difficulty == (LevelDifficulty)levelDifficultyNumVal).ToList();
                 levelDifficultyNumVal++;
@@ -141,11 +169,11 @@ namespace MyHangman.Services
                 requiredLevels.Add(item.ID);
             }
 
-
             return requiredLevels;
         }
 
-        private static List<Level> GetAllIncompleteLevels(List<CompleteLevel> completeLevels)
+        // returns all levels that players have not completed yet
+        private static IEnumerable<Level> GetAllIncompleteLevels(IEnumerable<CompleteLevel> completeLevels)
         {
             DataAccess dataAccess = new DataAccess();
             List<Level> allLevels = dataAccess.GetAllLevels();
@@ -153,7 +181,7 @@ namespace MyHangman.Services
 
             foreach (var level in allLevels)
             {
-                CompleteLevel completeLevel = completeLevels.Where(x => x.LevelID == level.ID).SingleOrDefault();
+                CompleteLevel completeLevel = completeLevels.SingleOrDefault(x => x.LevelID == level.ID);
 
                 if (completeLevel == null)
                 {
