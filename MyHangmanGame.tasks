@@ -3,7 +3,7 @@
     "$type": "VSToDoList.Models.Task, VSToDoList",
     "Name": "Start new game by getting all levels that current player have not completed yet",
     "IsDone": false,
-    "IsExpanded": true,
+    "IsExpanded": false,
     "SubTasks": [
       {
         "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -23,5 +23,161 @@
       }
     ],
     "Status": 2
+  },
+  {
+    "$type": "VSToDoList.Models.Task, VSToDoList",
+    "Name": "Implement score reward for each guessed letter and completed level",
+    "IsDone": false,
+    "IsExpanded": true,
+    "SubTasks": [
+      {
+        "$type": "VSToDoList.Models.Task, VSToDoList",
+        "Name": "For correct letter guess base score of 5 x difficulty level value",
+        "IsDone": false,
+        "IsExpanded": true,
+        "SubTasks": [],
+        "Status": 0
+      },
+      {
+        "$type": "VSToDoList.Models.Task, VSToDoList",
+        "Name": "For completed level base score of 20 x difficulty level value",
+        "IsDone": false,
+        "IsExpanded": true,
+        "SubTasks": [],
+        "Status": 0
+      }
+    ],
+    "Status": 0
+  },
+  {
+    "$type": "VSToDoList.Models.Task, VSToDoList",
+    "Name": "Implement score penalty for failed letter and word guesses",
+    "IsDone": false,
+    "IsExpanded": false,
+    "SubTasks": [
+      {
+        "$type": "VSToDoList.Models.Task, VSToDoList",
+        "Name": "For failed letter guess",
+        "IsDone": false,
+        "IsExpanded": false,
+        "SubTasks": [
+          {
+            "$type": "VSToDoList.Models.Task, VSToDoList",
+            "Name": "- very easy: 3 score",
+            "IsDone": false,
+            "IsExpanded": false,
+            "SubTasks": [],
+            "Status": 0
+          },
+          {
+            "$type": "VSToDoList.Models.Task, VSToDoList",
+            "Name": "- easy: 6 score",
+            "IsDone": false,
+            "IsExpanded": false,
+            "SubTasks": [],
+            "Status": 0
+          },
+          {
+            "$type": "VSToDoList.Models.Task, VSToDoList",
+            "Name": "- medium: 8 score",
+            "IsDone": false,
+            "IsExpanded": false,
+            "SubTasks": [],
+            "Status": 0
+          },
+          {
+            "$type": "VSToDoList.Models.Task, VSToDoList",
+            "Name": "- hard: 11 score",
+            "IsDone": false,
+            "IsExpanded": false,
+            "SubTasks": [],
+            "Status": 0
+          },
+          {
+            "$type": "VSToDoList.Models.Task, VSToDoList",
+            "Name": "- very hard: 15 score",
+            "IsDone": false,
+            "IsExpanded": false,
+            "SubTasks": [],
+            "Status": 0
+          },
+          {
+            "$type": "VSToDoList.Models.Task, VSToDoList",
+            "Name": "- PRO: 30 score",
+            "IsDone": false,
+            "IsExpanded": false,
+            "SubTasks": [],
+            "Status": 0
+          }
+        ],
+        "Status": 0
+      },
+      {
+        "$type": "VSToDoList.Models.Task, VSToDoList",
+        "Name": "For failed word guess",
+        "IsDone": false,
+        "IsExpanded": false,
+        "SubTasks": [
+          {
+            "$type": "VSToDoList.Models.Task, VSToDoList",
+            "Name": "- very easy: 25 score",
+            "IsDone": false,
+            "IsExpanded": false,
+            "SubTasks": [],
+            "Status": 0
+          },
+          {
+            "$type": "VSToDoList.Models.Task, VSToDoList",
+            "Name": "- easy: 35 score",
+            "IsDone": false,
+            "IsExpanded": false,
+            "SubTasks": [],
+            "Status": 0
+          },
+          {
+            "$type": "VSToDoList.Models.Task, VSToDoList",
+            "Name": "- medium: 40 score",
+            "IsDone": false,
+            "IsExpanded": false,
+            "SubTasks": [],
+            "Status": 0
+          },
+          {
+            "$type": "VSToDoList.Models.Task, VSToDoList",
+            "Name": "- hard: 45 score",
+            "IsDone": false,
+            "IsExpanded": false,
+            "SubTasks": [],
+            "Status": 0
+          },
+          {
+            "$type": "VSToDoList.Models.Task, VSToDoList",
+            "Name": "- very hard: 60 score",
+            "IsDone": false,
+            "IsExpanded": false,
+            "SubTasks": [],
+            "Status": 0
+          },
+          {
+            "$type": "VSToDoList.Models.Task, VSToDoList",
+            "Name": "- PRO: 100 score",
+            "IsDone": false,
+            "IsExpanded": false,
+            "SubTasks": [],
+            "Status": 0
+          }
+        ],
+        "Status": 0
+      }
+    ],
+    "Status": 0
+  },
+  {
+    "$type": "VSToDoList.Models.Task, VSToDoList",
+    "Name": "Min amount of score cannot be less that 0",
+    "IsDone": false,
+    "IsExpanded": false,
+    "SubTasks": [],
+    "Status": 0
   }
 ]

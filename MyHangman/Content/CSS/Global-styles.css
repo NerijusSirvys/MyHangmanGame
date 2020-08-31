@@ -23,7 +23,6 @@ header {
 
 main {
     width: 100%;
-    height: auto;
     margin: auto;
     background-color: ghostwhite;
 }
@@ -76,4 +75,9 @@ h3 {
 
     width: max-content;
    
+}
+
+img {
+    height: 30px;
+    width: auto;
 }

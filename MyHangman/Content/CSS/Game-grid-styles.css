@@ -19,10 +19,7 @@
     grid-area: image;
 }
 
-    .image-section img {
-        height: 350px;
-        width: auto;
-    }
+
 
 .statistics-section {
     grid-area: statistics;

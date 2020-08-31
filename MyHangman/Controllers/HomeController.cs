@@ -47,6 +47,8 @@ namespace MyHangman.Controllers
 
             model.IsLoss = GameEngine.CheckForLoss(model.NumberOfGuessesLeft);
 
+            model.GameScore = GameEngine.UpdatePlayerGameScore(User.Identity.GetUserId(), model.LevelDifficulty, isGuessCorrect, model.IsWin, model.IsLoss);
+
             if (model.IsWin)
             {
                 GameEngine.AddWinToPlayer(User.Identity.GetUserId(), model.LevelID);

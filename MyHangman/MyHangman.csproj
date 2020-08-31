@@ -173,6 +173,7 @@
     <Compile Include="Services\DataAccess.cs" />
     <Compile Include="Services\EventState.cs" />
     <Compile Include="Services\GameEngine.cs" />
+    <Compile Include="Services\GameScoreManager.cs" />
     <Compile Include="Services\Mapper.cs" />
     <Compile Include="ViewModels\GameState.cs" />
     <Compile Include="ViewModels\GameVM.cs" />

@@ -22,25 +22,6 @@ namespace MyHangman.Services
             dataAccess.Save();
         }
 
-        public static Level GetRandomLevel(IEnumerable<int> levelSetIDs, IEnumerable<CompleteLevel> completeLevels)
-        {
-            Random random = new Random();
-
-            // .Any() returns true if collection have any members
-            if (!levelSetIDs.Any())
-            {
-                levelSetIDs = LoadLevelSet(completeLevels);
-            }
-
-            int index = random.Next(0, levelSetIDs.Count() - 1);
-
-            int levelID = levelSetIDs.ElementAtOrDefault(index);
-
-            Level level = GetLevelByID(levelID);
-
-            return level;
-        }
-
         public static string CalculateGameProgress(Player player)
         {
             DataAccess dataAccess = new DataAccess();
@@ -49,13 +30,6 @@ namespace MyHangman.Services
             int totalNumOfLevels = dataAccess.GetNumberOfLevels();
 
             return $"{completedLevels + 1} of {totalNumOfLevels}";
-        }
-
-        public static Level GetLevelByID(int levelID)
-        {
-            DataAccess dataAccess = new DataAccess();
-
-            return dataAccess.GetLevelByID(levelID);
         }
 
         public static bool CheckForLoss(int numberOfGuessesLeft)
@@ -75,6 +49,13 @@ namespace MyHangman.Services
             return dataAccess.GetGameLevelByDifficulty(levelDifficulty);
         }
 
+        public static Level GetLevelByID(int levelID)
+        {
+            DataAccess dataAccess = new DataAccess();
+
+            return dataAccess.GetLevelByID(levelID);
+        }
+
         public static Player GetPlayer(String playerID)
         {
             DataAccess dataAccess = new DataAccess();
@@ -82,11 +63,40 @@ namespace MyHangman.Services
             return dataAccess.GetPlayerByID(playerID);
         }
 
+        public static Level GetRandomLevel(IEnumerable<int> levelSetIDs, IEnumerable<CompleteLevel> completeLevels)
+        {
+            Random random = new Random();
+
+            // .Any() returns true if collection have any members
+            if (!levelSetIDs.Any())
+            {
+                levelSetIDs = LoadLevelSet(completeLevels);
+            }
+
+            int index = random.Next(0, levelSetIDs.Count() - 1);
+
+            int levelID = levelSetIDs.ElementAtOrDefault(index);
+
+            Level level = GetLevelByID(levelID);
+
+            return level;
+        }
+
         public static string HideAnswer(int length)
         {
             StringBuilder builder = new StringBuilder();
 
             return builder.Append('?', length).ToString();
+        }
+
+        // Load set of available levels that player have not completed yet with same difficulty starting from lowest
+        public static IEnumerable<int> LoadLevelSet(IEnumerable<CompleteLevel> completeLevels)
+        {
+            IEnumerable<Level> incompleteLevels = GetAllIncompleteLevels(completeLevels);
+
+            IEnumerable<int> requiredLevels = GetSameDifficultyLevelIDs(incompleteLevels);
+
+            return requiredLevels;
         }
 
         public static string ProcessLetterGuess(char key, string hiddenAnswer, string openAnswer, out bool isGuessCorrect)
@@ -136,18 +146,58 @@ namespace MyHangman.Services
             return numberOfGuessesLeft;
         }
 
-        // Load set of available levels that player have not completed yet with same difficulty starting from lowest
-        public static IEnumerable<int> LoadLevelSet(IEnumerable<CompleteLevel> completeLevels)
+        public static int UpdatePlayerGameScore(string playerID, LevelDifficulty levelDifficulty, bool isGuessCorrect, bool isWin, bool isLoss)
         {
-            IEnumerable<Level> incompleteLevels = GetAllIncompleteLevels(completeLevels);
+            DataAccess dataAccess = new DataAccess();
+            Player player = dataAccess.GetPlayerByID(playerID);
 
-            IEnumerable<int> requiredLevels = GetSameDifficultyLevelIDs(incompleteLevels);
+            if (isGuessCorrect)
+            {
+                player.GameScore = GameScoreManager.AddScoreForCorrectLetterGuess(levelDifficulty, player.GameScore);
+            }
 
-            return requiredLevels;
+            if (!isGuessCorrect)
+            {
+                player.GameScore = GameScoreManager.SubtractScoreForFailedLetterGuess(levelDifficulty, player.GameScore);
+            }
+
+            if (isWin)
+            {
+                player.GameScore = GameScoreManager.AddScoreForCompletedLevel(levelDifficulty, player.GameScore);
+            }
+
+            if (isLoss)
+            {
+                player.GameScore = GameScoreManager.SubtractScoreForFailedLevel(levelDifficulty, player.GameScore);
+            }
+
+            dataAccess.Save();
+
+            return player.GameScore;
+        }
+
+        // returns all levels that players have not completed yet
+        private static IEnumerable<Level> GetAllIncompleteLevels(IEnumerable<CompleteLevel> completeLevels)
+        {
+            DataAccess dataAccess = new DataAccess();
+            List<Level> allLevels = dataAccess.GetAllLevels();
+            List<Level> incompleteLevels = new List<Level>();
+
+            foreach (var level in allLevels)
+            {
+                CompleteLevel completeLevel = completeLevels.SingleOrDefault(x => x.LevelID == level.ID);
+
+                if (completeLevel == null)
+                {
+                    incompleteLevels.Add(level);
+                }
+            }
+
+            return incompleteLevels;
         }
 
         // returns ID's of all incomplete levels that have required difficulty level
-        private static List<int> GetSameDifficultyLevelIDs(IEnumerable<Level> incompleteLevels)
+        private static IEnumerable<int> GetSameDifficultyLevelIDs(IEnumerable<Level> incompleteLevels)
         {
             List<int> requiredLevels = new List<int>();
 
@@ -170,26 +220,6 @@ namespace MyHangman.Services
             }
 
             return requiredLevels;
-        }
-
-        // returns all levels that players have not completed yet
-        private static IEnumerable<Level> GetAllIncompleteLevels(IEnumerable<CompleteLevel> completeLevels)
-        {
-            DataAccess dataAccess = new DataAccess();
-            List<Level> allLevels = dataAccess.GetAllLevels();
-            List<Level> incompleteLevels = new List<Level>();
-
-            foreach (var level in allLevels)
-            {
-                CompleteLevel completeLevel = completeLevels.SingleOrDefault(x => x.LevelID == level.ID);
-
-                if (completeLevel == null)
-                {
-                    incompleteLevels.Add(level);
-                }
-            }
-
-            return incompleteLevels;
         }
     }
 }
