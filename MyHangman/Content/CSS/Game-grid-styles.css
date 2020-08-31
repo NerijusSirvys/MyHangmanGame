@@ -9,6 +9,7 @@
 .riddle-section {
     grid-area: riddle;
     margin: 0;
+    height: auto;
 }
 
 .keyboard-section {
@@ -23,13 +24,14 @@
 
 .statistics-section {
     grid-area: statistics;
+    justify-content: start;
 }
 
 .main-grid-area {
     display: grid;
     grid-template-columns: 60% 25%;
-    grid-template-rows: auto;
-    column-gap: 40px;
-    grid-template-areas: "header header" "riddle image" "hints statistics" "keyboard statistics";
+    grid-template-rows: 3vw 20vw 10vw 15vw;
+    column-gap: 2vw;
+    grid-template-areas: "header header" "riddle image" "hints image" "keyboard statistics";
     justify-content: center;
 }

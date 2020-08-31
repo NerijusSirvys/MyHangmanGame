@@ -14,7 +14,9 @@
         {
             <img src="~/Images/hangman-step-0.png" alt="Alternate Text" />
             <div class="btn-wrapper">
-                @Html.ActionLink("Finish", "Welcome", "Account", null, new { @class = "btn" })
+                @Html.ActionLink("Finish", "LogOut", "Account", null, new { @class = "btn" })
+                @Html.ActionLink("Try Again", "BeginNewLevel", "Home", null, new { @class = "btn" })
+
             </div>
         }
     </section>

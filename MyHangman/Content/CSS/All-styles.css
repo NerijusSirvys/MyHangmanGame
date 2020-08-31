@@ -4,12 +4,13 @@
 
 .content--center {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .error-message {
     color: red;
-    font-size: 0.6em;
+    font-size: 0.8em;
+    height: 2vw;
 }
 
 .content--left {
@@ -17,11 +18,16 @@
 }
 
 header p {
-    margin-left: 50px;
+    font-size: 1.6vw;
+
+}
+
+.hint,
+.statistics{
+    width: 100%;
 }
 
 .span-letters {
-    font-size: 3rem;
     letter-spacing: normal;
     padding: 10px;
     margin: 0 -10px;
@@ -32,18 +38,16 @@ header p {
 .input-wrapper {
     display: flex;
     flex-direction: column;
-    width: 70%;
-    max-width: 400px;
-    margin: 45px auto;
-    height: 3em;
-    font-size: 1.3em;
+    width: 35%;
+    margin: 2% auto;
+    height: 15%;
+    font-size: 1.3vw;
 }
 
     .input-wrapper input {
         border: 0.5px solid black;
         border-radius: 5px;
-        /*font-family: 'Thasadith', sans-serif;*/
-        height: 2em
+        height: 100%;
     }
 
         .input-wrapper input:focus {

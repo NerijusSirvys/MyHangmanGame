@@ -5,12 +5,13 @@
 .btn-wrapper {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .btn {
-    margin: 30px;
-    font-size: 1.2em;
-    width: 200px;
+    margin: 2%;
+    font-size: 1.6vw;
+    width: 25%;
     padding: 1em 3.5em;
     background-color: #ededed;
     background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
@@ -39,13 +40,8 @@
 }
 
 .key-btn {
-    padding-left: 1.2rem;
-    padding-right: 1.2rem;
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
+    padding: 0;
     text-align: center;
     margin: 1%;
     width: 8%;
-    /*margin: 10px 5px;*/
-    /*width: 60px;*/
 }

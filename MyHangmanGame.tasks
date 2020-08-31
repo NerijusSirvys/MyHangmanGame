@@ -36,7 +36,7 @@
         "IsDone": false,
         "IsExpanded": true,
         "SubTasks": [],
-        "Status": 0
+        "Status": 2
       },
       {
         "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -44,16 +44,16 @@
         "IsDone": false,
         "IsExpanded": true,
         "SubTasks": [],
-        "Status": 0
+        "Status": 2
       }
     ],
-    "Status": 0
+    "Status": 2
   },
   {
     "$type": "VSToDoList.Models.Task, VSToDoList",
     "Name": "Implement score penalty for failed letter and word guesses",
     "IsDone": false,
-    "IsExpanded": false,
+    "IsExpanded": true,
     "SubTasks": [
       {
         "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -67,7 +67,7 @@
             "IsDone": false,
             "IsExpanded": false,
             "SubTasks": [],
-            "Status": 0
+            "Status": 2
           },
           {
             "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -75,7 +75,7 @@
             "IsDone": false,
             "IsExpanded": false,
             "SubTasks": [],
-            "Status": 0
+            "Status": 2
           },
           {
             "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -83,7 +83,7 @@
             "IsDone": false,
             "IsExpanded": false,
             "SubTasks": [],
-            "Status": 0
+            "Status": 2
           },
           {
             "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -91,7 +91,7 @@
             "IsDone": false,
             "IsExpanded": false,
             "SubTasks": [],
-            "Status": 0
+            "Status": 2
           },
           {
             "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -99,7 +99,7 @@
             "IsDone": false,
             "IsExpanded": false,
             "SubTasks": [],
-            "Status": 0
+            "Status": 2
           },
           {
             "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -107,10 +107,10 @@
             "IsDone": false,
             "IsExpanded": false,
             "SubTasks": [],
-            "Status": 0
+            "Status": 2
           }
         ],
-        "Status": 0
+        "Status": 2
       },
       {
         "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -124,7 +124,7 @@
             "IsDone": false,
             "IsExpanded": false,
             "SubTasks": [],
-            "Status": 0
+            "Status": 2
           },
           {
             "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -132,7 +132,7 @@
             "IsDone": false,
             "IsExpanded": false,
             "SubTasks": [],
-            "Status": 0
+            "Status": 2
           },
           {
             "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -140,7 +140,7 @@
             "IsDone": false,
             "IsExpanded": false,
             "SubTasks": [],
-            "Status": 0
+            "Status": 2
           },
           {
             "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -148,7 +148,7 @@
             "IsDone": false,
             "IsExpanded": false,
             "SubTasks": [],
-            "Status": 0
+            "Status": 2
           },
           {
             "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -156,7 +156,7 @@
             "IsDone": false,
             "IsExpanded": false,
             "SubTasks": [],
-            "Status": 0
+            "Status": 2
           },
           {
             "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -164,13 +164,13 @@
             "IsDone": false,
             "IsExpanded": false,
             "SubTasks": [],
-            "Status": 0
+            "Status": 2
           }
         ],
-        "Status": 0
+        "Status": 2
       }
     ],
-    "Status": 0
+    "Status": 2
   },
   {
     "$type": "VSToDoList.Models.Task, VSToDoList",
@@ -178,6 +178,6 @@
     "IsDone": false,
     "IsExpanded": false,
     "SubTasks": [],
-    "Status": 0
+    "Status": 2
   }
 ]
