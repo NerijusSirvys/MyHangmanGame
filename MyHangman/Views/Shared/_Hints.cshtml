@@ -1,21 +1,65 @@
-﻿@model MyHangman.ViewModels.GameVM
+﻿@using MyHangman.Services
 
+@model MyHangman.ViewModels.GameVM
+
+@{ 
+    int hintPosition = 1;
+}
 
 @foreach (var item in Model.Hints)
 {
 
+
     if (item.IsOpen)
     {
-        <div class="hint">
-            <p>@item.OpenHint</p>
+        <div class="hint-wrapper">
+            <div class=" hint-body">
+                <p>@item.OpenHint</p>
+            </div>
         </div>
     }
     else
     {
-        <div class="hint">
-            <p>@item.HiddenHint</p>
+        <div class="hint-wrapper">
+            <div class="hint-body">
+                <p>@item.HiddenHint</p>
+            </div>
+            <div class="btn-wrapper buy-hint-btn-wrapper">
+                <div class="hint-price-wrapper">
+                    <i class="fas fa-coins coin-icon"></i>
+                    <p class="hint-price">@HintManager.CalculatePrice(Model.LevelDifficulty, hintPosition)</p>
+                </div>
+                @using (Html.BeginForm("OpenHint", "Home", FormMethod.Post))
+                {
+                    <input type="hidden" name="hintposition" value="@hintPosition" />
+                    <input type="hidden" name="hintID" value="@item.ID" />
+                    <input class="btn buy-hint-btn" type="submit" name="buyHintbtn" value="Buy" />
+
+                    @Html.HiddenFor(x => x.LevelID)
+                    @Html.HiddenFor(x => x.Riddle)
+                    @Html.HiddenFor(x => x.HiddenAnswer)
+                    @Html.HiddenFor(x => x.OpenAnswer)
+                    @Html.HiddenFor(x => x.GameScore)
+                    @Html.HiddenFor(x => x.GoldenCoins)
+                    @Html.HiddenFor(x => x.IsLoss)
+                    @Html.HiddenFor(x => x.IsWin)
+                    @Html.HiddenFor(x => x.LevelDifficulty)
+                    @Html.HiddenFor(x => x.NumberOfCorrectGuesses)
+                    @Html.HiddenFor(x => x.NumberOfGuessesLeft)
+                    @Html.HiddenFor(x => x.Progress)
+                    for (int i = 0; i < Model.Hints.Count(); i++)
+                    {
+                        @Html.HiddenFor(x => x.Hints[i].ID);
+                        @Html.HiddenFor(x => x.Hints[i].IsOpen);
+                        @Html.HiddenFor(x => x.Hints[i].OpenHint);
+                    }
+
+                }
+            </div>
         </div>
     }
+
+    hintPosition++;
 
 }
 

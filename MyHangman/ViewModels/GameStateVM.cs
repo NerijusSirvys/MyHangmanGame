@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MyHangman.ViewModels
 {
-    public class GameState
+    public class GameStateVM
     {
         public string Message { get; set; }
         public bool IsWin { get; set; }

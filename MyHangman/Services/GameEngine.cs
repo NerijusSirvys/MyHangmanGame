@@ -1,5 +1,6 @@
 ﻿using MyHangman.Enums;
 using MyHangman.Models;
+using MyHangman.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -220,6 +221,39 @@ namespace MyHangman.Services
             }
 
             return requiredLevels;
+        }
+
+
+        // TODO redo this after db update
+        public static bool OpenHint(string playerID, int levelID, int hintID)
+        {
+            DataAccess dataAccess = new DataAccess();
+
+            Level currentLevel = dataAccess.GetLevelByID(levelID);
+
+            OpenHint openHint = new OpenHint();
+            
+            openHint.HintID = hintID;
+            openHint.PlayerID = playerID;
+
+            dataAccess.AddOpenHint(openHint);
+
+            return true;
+
+        }
+
+        public static int BuyHint(string playerID, int levelID, int hintPosition)
+        {
+            DataAccess dataAccess = new DataAccess();
+
+            Level currentLevel = dataAccess.GetLevelByID(levelID);
+
+            Player player = dataAccess.GetPlayerByID(playerID);
+            player.GoldenCoins = HintManager.PayForHint(player.GoldenCoins, currentLevel.Difficulty, hintPosition);
+
+            dataAccess.Save();
+
+            return player.GoldenCoins;
         }
     }
 }

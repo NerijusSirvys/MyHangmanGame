@@ -36,7 +36,7 @@ namespace MyHangman.Controllers
         public ActionResult GuessLetter(char key, GameVM model)
         {
             ModelState.Clear();
-
+            
             model.HiddenAnswer = GameEngine.ProcessLetterGuess(key, model.HiddenAnswer, model.OpenAnswer, out bool isGuessCorrect);
 
             model.NumberOfCorrectGuesses = GameEngine.UpdateCorrectGuessCount(isGuessCorrect, model.NumberOfCorrectGuesses);
@@ -53,7 +53,7 @@ namespace MyHangman.Controllers
             {
                 GameEngine.AddWinToPlayer(User.Identity.GetUserId(), model.LevelID);
 
-                GameState gameState = new GameState
+                GameStateVM gameState = new GameStateVM
                 {
                     IsWin = true,
                     Message = "Level complete...!!!"
@@ -64,7 +64,7 @@ namespace MyHangman.Controllers
 
             if (model.IsLoss)
             {
-                GameState gameState = new GameState
+                GameStateVM gameState = new GameStateVM
                 {
                     IsLoss = true,
                     Message = "You run out of guesses. Game Over...!!!"
@@ -72,6 +72,22 @@ namespace MyHangman.Controllers
 
                 return View("GameMessage", gameState);
             }
+
+            return View("Index", model);
+        }
+
+        public ActionResult OpenHint(GameVM model, int hintPosition, int hintID)
+        {
+            if(model.GoldenCoins < HintManager.CalculatePrice(model.LevelDifficulty, hintPosition))
+            {
+                return View("Index", model);
+            }
+
+            ModelState.Clear();
+
+            model.GoldenCoins = GameEngine.BuyHint(User.Identity.GetUserId(), model.LevelID, hintPosition);
+
+            model.Hints.Find(x => x.ID == hintID).IsOpen = GameEngine.OpenHint(User.Identity.GetUserId(), model.LevelID, hintID);
 
             return View("Index", model);
         }

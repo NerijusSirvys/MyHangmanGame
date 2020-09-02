@@ -6,6 +6,7 @@ namespace MyHangman.Services
 {
     public static class Mapper
     {
+        // TODO make opened hints to apear open for player not for level use hint manager
         public static GameVM MapGameVM(Player player, Level level)
         {
             GameVM viewModel = new GameVM
@@ -24,9 +25,9 @@ namespace MyHangman.Services
                 Progress = GameEngine.CalculateGameProgress(player),
                 Hints = new List<HintVM>
                 {
-                    new HintVM{OpenHint = level.Hints[0].Body, IsOpen = false, ID = level.Hints[0].ID},
-                    new HintVM{OpenHint = level.Hints[1].Body, IsOpen = false, ID = level.Hints[1].ID},
-                    new HintVM{OpenHint = level.Hints[2].Body, IsOpen = false, ID = level.Hints[2].ID}
+                    new HintVM{OpenHint = level.Hints[0].Body, IsOpen = HintManager.LookForOpenHint(player.Id, level.Hints[0].ID), ID = level.Hints[0].ID},
+                    new HintVM{OpenHint = level.Hints[1].Body, IsOpen = HintManager.LookForOpenHint(player.Id, level.Hints[1].ID), ID = level.Hints[1].ID },
+                    new HintVM{OpenHint = level.Hints[2].Body, IsOpen = HintManager.LookForOpenHint(player.Id, level.Hints[2].ID), ID = level.Hints[2].ID }
                 }
             };
 
