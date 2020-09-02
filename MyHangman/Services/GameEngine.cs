@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.UI.WebControls;
 
 namespace MyHangman.Services
 {
@@ -41,6 +42,19 @@ namespace MyHangman.Services
         public static bool CheckForWin(int numberOfCorrectGuesses, int numOfLettersToGuess)
         {
             return numberOfCorrectGuesses == numOfLettersToGuess;
+        }
+
+        public static int AddCoin(LevelDifficulty levelDifficulty, string playerID)
+        {
+            DataAccess dataAccess = new DataAccess();
+
+            Player player = dataAccess.GetPlayerByID(playerID);
+
+            player.GoldenCoins += CoinManager.AddCoins(levelDifficulty);
+
+            dataAccess.Save();
+
+            return player.GoldenCoins;
         }
 
         public static Level GetLevelByDifficulty(LevelDifficulty levelDifficulty)
@@ -124,27 +138,6 @@ namespace MyHangman.Services
             }
 
             return builder.ToString();
-        }
-
-        public static int UpdateCorrectGuessCount(bool isGuessCorrect, int currentNumberOfGuesses)
-        {
-            if (isGuessCorrect)
-            {
-                // this adds one correct guess to total
-                currentNumberOfGuesses++;
-            }
-            return currentNumberOfGuesses;
-        }
-
-        public static int UpdateFailedGuessCount(bool isGuessCorrect, int numberOfGuessesLeft)
-        {
-            if (!isGuessCorrect)
-            {
-                // this adds one correct guess to total
-                numberOfGuessesLeft--;
-            }
-
-            return numberOfGuessesLeft;
         }
 
         public static int UpdatePlayerGameScore(string playerID, LevelDifficulty levelDifficulty, bool isGuessCorrect, bool isWin, bool isLoss)

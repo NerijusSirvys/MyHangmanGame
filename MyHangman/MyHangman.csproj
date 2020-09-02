@@ -233,6 +233,7 @@
     <Compile Include="Models\OpenHint.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CoinManager.cs" />
     <Compile Include="Services\DataAccess.cs" />
     <Compile Include="Services\EventState.cs" />
     <Compile Include="Services\GameEngine.cs" />

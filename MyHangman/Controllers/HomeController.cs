@@ -39,39 +39,53 @@ namespace MyHangman.Controllers
             
             model.HiddenAnswer = GameEngine.ProcessLetterGuess(key, model.HiddenAnswer, model.OpenAnswer, out bool isGuessCorrect);
 
-            model.NumberOfCorrectGuesses = GameEngine.UpdateCorrectGuessCount(isGuessCorrect, model.NumberOfCorrectGuesses);
-
-            model.NumberOfGuessesLeft = GameEngine.UpdateFailedGuessCount(isGuessCorrect, model.NumberOfGuessesLeft);
-
-            model.IsWin = GameEngine.CheckForWin(model.NumberOfCorrectGuesses, model.OpenAnswer.Length);
-
-            model.IsLoss = GameEngine.CheckForLoss(model.NumberOfGuessesLeft);
-
-            model.GameScore = GameEngine.UpdatePlayerGameScore(User.Identity.GetUserId(), model.LevelDifficulty, isGuessCorrect, model.IsWin, model.IsLoss);
-
-            if (model.IsWin)
+            if (isGuessCorrect)
             {
-                GameEngine.AddWinToPlayer(User.Identity.GetUserId(), model.LevelID);
+                model.NumberOfCorrectGuesses++;
+                
+                model.IsWin = GameEngine.CheckForWin(model.NumberOfCorrectGuesses, model.OpenAnswer.Length);
 
-                GameStateVM gameState = new GameStateVM
-                {
-                    IsWin = true,
-                    Message = "Level complete...!!!"
-                };
+                model.GoldenCoins = GameEngine.AddCoin(model.LevelDifficulty,User.Identity.GetUserId());
+            }
+            else
+            {
+                model.NumberOfGuessesLeft--;
 
-                return View("GameMessage", gameState);
+                model.IsLoss = GameEngine.CheckForLoss(model.NumberOfGuessesLeft);
             }
 
+            model.GameScore = GameEngine.UpdatePlayerGameScore(User.Identity.GetUserId(), model.LevelDifficulty, isGuessCorrect, model.IsWin, model.IsLoss);
+            
+            if (model.IsWin)
+                {
+                    GameEngine.AddWinToPlayer(User.Identity.GetUserId(), model.LevelID);
+
+                    GameStateVM gameState = new GameStateVM
+                    {
+                        IsWin = true,
+                        Message = "Level complete...!!!"
+                    };
+
+                    return View("GameMessage", gameState);
+                }
+            
             if (model.IsLoss)
-            {
-                GameStateVM gameState = new GameStateVM
+                {
+                    GameStateVM gameState = new GameStateVM
                 {
                     IsLoss = true,
                     Message = "You run out of guesses. Game Over...!!!"
                 };
 
-                return View("GameMessage", gameState);
-            }
+                    return View("GameMessage", gameState);
+                }
+            
+
+
+
+
+
+
 
             return View("Index", model);
         }
