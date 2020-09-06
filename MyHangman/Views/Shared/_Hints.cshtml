@@ -2,7 +2,7 @@
 
 @model MyHangman.ViewModels.GameVM
 
-@{ 
+@{
     int hintPosition = 1;
 }
 
@@ -44,8 +44,8 @@
                     @Html.HiddenFor(x => x.IsLoss)
                     @Html.HiddenFor(x => x.IsWin)
                     @Html.HiddenFor(x => x.LevelDifficulty)
-                    @Html.HiddenFor(x => x.NumberOfCorrectGuesses)
-                    @Html.HiddenFor(x => x.NumberOfGuessesLeft)
+                    @Html.HiddenFor(x => x.CorrectGuesses)
+                    @Html.HiddenFor(x => x.FailedGuesses)
                     @Html.HiddenFor(x => x.Progress)
                     for (int i = 0; i < Model.Hints.Count(); i++)
                     {
@@ -62,9 +62,3 @@
     hintPosition++;
 
 }
-
-
-
-
-
-

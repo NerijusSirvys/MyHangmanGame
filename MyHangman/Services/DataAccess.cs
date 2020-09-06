@@ -1,7 +1,6 @@
 ﻿using MyHangman.Data;
-using MyHangman.Enums;
+using MyHangman.DTO;
 using MyHangman.Models;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -17,24 +16,9 @@ namespace MyHangman.Services
             context = new GameDbContext();
         }
 
-        public void AddOpenHint(OpenHint openHint)
+        public Player GetPlayerByID(string userID)
         {
-            context.OpenHints.Add(openHint);
-
-            context.SaveChanges();
-        }
-
-        public List<Level> GetAllLevels()
-        {
-            return context.Levels.ToList();
-        }
-
-        public Level GetGameLevelByDifficulty(LevelDifficulty levelDifficulty)
-        {
-            return context.Levels.Include(x => x.Hints)
-                                        .Include(x => x.OpenHints)
-                                        .Where(x => x.Difficulty == levelDifficulty)
-                                        .FirstOrDefault();
+            return context.Users.Include(x => x.CompleteLevels).Where(x => x.Id == userID).FirstOrDefault();
         }
 
         public Level GetLevelByID(int levelID)
@@ -45,9 +29,9 @@ namespace MyHangman.Services
                                  .SingleOrDefault();
         }
 
-        public int GetNumberOfLevels()
+        public List<Level> GetAllLevels()
         {
-            return context.Levels.Count();
+            return context.Levels.Include(x => x.Hints).Include(x => x.OpenHints).ToList();
         }
 
         public OpenHint GetOpenHint(string playerID, int hintID)
@@ -55,10 +39,22 @@ namespace MyHangman.Services
             return context.OpenHints.SingleOrDefault(x => x.PlayerID == playerID && x.HintID == hintID);
         }
 
-        public Player GetPlayerByID(string userID)
+        public void SaveOpenHint(OpenHint openHint)
         {
-            return context.Users.Include(x => x.CompleteLevels).Where(x => x.Id == userID).FirstOrDefault();
+            context.OpenHints.Add(openHint);
+            context.SaveChanges();
         }
+
+        public void UpdatePlayer(LetterProcessingDTO dto)
+        {
+            Player player = GetPlayerByID(dto.PlayerID);
+
+            player.GameScore = dto.GameScore;
+            player.GoldenCoins = dto.GoldenCoins;
+
+            Save();
+        }
+
 
         public void Save()
         {

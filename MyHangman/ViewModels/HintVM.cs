@@ -1,6 +1,4 @@
-﻿using MyHangman.Enums;
-
-namespace MyHangman.ViewModels
+﻿namespace MyHangman.ViewModels
 {
     public class HintVM
     {

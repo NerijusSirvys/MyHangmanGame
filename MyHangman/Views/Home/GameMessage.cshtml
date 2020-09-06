@@ -9,14 +9,13 @@
                 @Html.ActionLink("Next", "BeginNewLevel", "Home", new { @class = "btn" })
             </div>
         }
-        
+
         @if(Model.IsLoss)
         {
-            <img src="~/Images/hangman-step-0.png" alt="Alternate Text" />
+            <img src="~/Images/hangman-step-6.png" alt="Alternate Text" />
             <div class="btn-wrapper">
                 @Html.ActionLink("Finish", "LogOut", "Account", null, new { @class = "btn" })
                 @Html.ActionLink("Try Again", "BeginNewLevel", "Home", null, new { @class = "btn" })
-
             </div>
         }
     </section>

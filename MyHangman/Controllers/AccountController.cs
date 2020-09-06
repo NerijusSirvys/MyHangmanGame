@@ -61,6 +61,7 @@ namespace MyHangman.Controllers
             }
 
             ClaimsIdentity identity = await UserManager.CreateIdentityAsync(player, DefaultAuthenticationTypes.ApplicationCookie);
+
             AuthManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
 
             return RedirectToAction("BeginNewLevel", "Home");
@@ -76,16 +77,28 @@ namespace MyHangman.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterVM model)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(model);
+                Player player = new Player { UserName = model.UserName };
+
+                IdentityResult result = await UserManager.CreateAsync(player, model.Password);
+
+                if (result.Succeeded)
+                {
+                    ClaimsIdentity identity = await UserManager.CreateIdentityAsync(player, DefaultAuthenticationTypes.ApplicationCookie);
+
+                    AuthManager.SignIn(new AuthenticationProperties { IsPersistent = false }, identity);
+
+                    return RedirectToAction("BeginNewLevel", "Home");
+                }
+                else
+                {
+                    EventState eventState = EventState.GetEventState(result);
+
+                    return View("Status", eventState);
+                }
             }
-
-            IdentityResult result = await UserManager.CreateAsync(new Player { UserName = model.UserName }, model.Password);
-
-            EventState eventState = EventState.GetEventState(result);
-
-            return View("Status", eventState);
+            return View(model);
         }
 
         [HttpGet]

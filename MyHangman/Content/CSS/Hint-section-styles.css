@@ -2,12 +2,12 @@
      HINT SECTION STYLES
 \-------------------------*/
 
-.hint-wrapper{
+.hint-wrapper {
     display: flex;
     width: 100%;
 }
 
-.hint-price-wrapper{
+.hint-price-wrapper {
     display: flex;
     min-width: 35%;
 }
@@ -17,19 +17,19 @@
     background-color: #c3c3c3;
 }
 
-.hint-body{
+.hint-body {
     width: 80%;
 }
 
-.buy-hint-btn-wrapper{
+.buy-hint-btn-wrapper {
     justify-content: end;
     width: 20%;
     align-content: center;
 }
 
-.buy-hint-btn-wrapper p{
-    margin: auto 1%;
-}
+    .buy-hint-btn-wrapper p {
+        margin: auto 1%;
+    }
 
 .buy-hint-btn {
     padding: 2% 10%;
@@ -39,7 +39,7 @@
     font-size: 1vw;
 }
 
-.coin-icon{
+.coin-icon {
     margin: auto 2%;
     color: #ffcf15;
     font-size: 0.9vw;

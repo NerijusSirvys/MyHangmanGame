@@ -1,8 +1,5 @@
 ﻿using MyHangman.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MyHangman.Services
 {
@@ -12,7 +9,8 @@ namespace MyHangman.Services
 
         public static int AddCoins(LevelDifficulty levelDifficulty)
         {
-            return (int)(BaseCoinReward * (int)levelDifficulty);
+            double coinVal = (double)(BaseCoinReward * (int)levelDifficulty);
+            return (int)Math.Ceiling(coinVal);
         }
     }
 }

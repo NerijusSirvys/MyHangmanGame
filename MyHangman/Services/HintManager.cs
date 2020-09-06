@@ -1,9 +1,5 @@
 ﻿using MyHangman.Enums;
 using MyHangman.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace MyHangman.Services
 {
@@ -15,7 +11,7 @@ namespace MyHangman.Services
         {
             // calculates cost of the hint based on current level difficulty and hint number
             // first out of three hints will be cheapest and third will be most expensive
-            // level difficulty adds extra costs as well. 
+            // level difficulty adds extra costs as well.
             double output = baseHintCost + ((int)levelDifficulty * hintPosition);
 
             return (int)output;
@@ -27,7 +23,7 @@ namespace MyHangman.Services
 
             OpenHint openHint = dataAccess.GetOpenHint(playerID, hintID);
 
-            if(openHint == null)
+            if (openHint == null)
             {
                 return false;
             }
@@ -35,11 +31,9 @@ namespace MyHangman.Services
             return true;
         }
 
-        public static int PayForHint(int goldenCoins, LevelDifficulty difficulty, int hintPosition)
+        public static int SubtractHintPrice(LevelDifficulty difficulty, int hintPosition)
         {
-            int output = goldenCoins - CalculatePrice(difficulty, hintPosition);
-
-            return output;
+            return CalculatePrice(difficulty, hintPosition);
         }
     }
 }

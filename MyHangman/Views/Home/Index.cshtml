@@ -6,7 +6,7 @@
 
     ViewBag.Title = "Index";
 
-    string path = $"~/Images/hangman-step-{@Model.NumberOfGuessesLeft}.png";
+    string path = $"~/Images/hangman-step-{@Model.FailedGuesses}.png";
 }
 <main class="main-grid-area">
     <header class="header">
@@ -67,8 +67,8 @@
             @Html.HiddenFor(x => x.IsLoss)
             @Html.HiddenFor(x => x.IsWin)
             @Html.HiddenFor(x => x.LevelDifficulty)
-            @Html.HiddenFor(x => x.NumberOfCorrectGuesses)
-            @Html.HiddenFor(x => x.NumberOfGuessesLeft)
+            @Html.HiddenFor(x => x.CorrectGuesses)
+            @Html.HiddenFor(x => x.FailedGuesses)
             @Html.HiddenFor(x => x.Progress)
             for (int i = 0; i < Model.Hints.Count(); i++)
             {
@@ -82,7 +82,7 @@
 
     <section class="image-section">
         <img src=@Url.Content(path) alt="Alternate Text" />
-    </section> 
+    </section>
 
     <section class="statistics-section content--left">
         <div class="statistics">

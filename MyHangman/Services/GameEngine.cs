@@ -1,6 +1,6 @@
-﻿using MyHangman.Enums;
+﻿using MyHangman.DTO;
+using MyHangman.Enums;
 using MyHangman.Models;
-using MyHangman.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,127 +9,177 @@ using System.Web.UI.WebControls;
 
 namespace MyHangman.Services
 {
-    public static class GameEngine
+    public class GameEngine
     {
-        // value is 6 due to number of hangman pictures to be replaced untill game over
-        public static int NumberOfAvailableGuesses { get { return 6; } }
+        private Random Random { get; }
+        private DataAccess DataAccess { get; }
+        private List<Level> LevelsToComplete { get; set; }
 
-        public static void AddWinToPlayer(string playerID, int levelID)
+        public GameEngine()
         {
-            DataAccess dataAccess = new DataAccess();
+            DataAccess = new DataAccess();
+            Random = new Random();
+            LevelsToComplete = new List<Level>();
+        }
 
-            Player player = dataAccess.GetPlayerByID(playerID);
+        //--------------------------------------------------------------------------------------------------------
+        //-----------------------------------PUBLIC METHODS-------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------
+
+        public GameDTO ConstructGameModel(string playerID)
+        {
+            GameDTO gameDTO = new GameDTO();
+
+            Player player = DataAccess.GetPlayerByID(playerID);
+            Level level = GetRandomLevel(player.CompleteLevels);
+
+            gameDTO.Player = Mapper.MapPlayerToDTO(player);
+            gameDTO.Level = Mapper.MapLevelToDTO(level);
+
+
+            return gameDTO;
+        }
+
+        public void AddWinToPlayer(string playerID, int levelID)
+        {
+            Player player = DataAccess.GetPlayerByID(playerID);
             player.CompleteLevels.Add(new CompleteLevel { LevelID = levelID });
 
-            dataAccess.Save();
+            DataAccess.Save();
         }
 
-        public static string CalculateGameProgress(Player player)
+        // no callers at the moment but this will be implemented in the future
+        public Level GetLevelByDifficulty(LevelDifficulty levelDifficulty)
         {
-            DataAccess dataAccess = new DataAccess();
+            List<Level> levels = DataAccess.GetAllLevels();
 
-            int completedLevels = player.CompleteLevels.Count;
-            int totalNumOfLevels = dataAccess.GetNumberOfLevels();
-
-            return $"{completedLevels + 1} of {totalNumOfLevels}";
+            return levels.Find(x => x.Difficulty == levelDifficulty);
         }
 
-        public static bool CheckForLoss(int numberOfGuessesLeft)
+        public Level GetRandomLevel(IEnumerable<CompleteLevel> completeLevels)
         {
-            return numberOfGuessesLeft == 0;
+            List<Level> incompleteLevels = GetAllIncompleteLevels(completeLevels);
+
+            if (LevelsToComplete.Count == 0)
+            {
+                LevelsToComplete = GetSameDifficultyLevels(incompleteLevels);
+            }
+
+            int index = Random.Next(0, LevelsToComplete.Count);
+
+            Level lvl = LevelsToComplete.ElementAtOrDefault(index);
+
+            return lvl;
         }
 
-        public static bool CheckForWin(int numberOfCorrectGuesses, int numOfLettersToGuess)
+        public LetterProcessingDTO ProcessLetterGuess(LetterProcessingDTO dto, char key)
         {
-            return numberOfCorrectGuesses == numOfLettersToGuess;
+            dto.Secret = UpdateSecret(dto.Answer, dto.Secret, key, out bool IsGuessCorrect);
+
+            if (IsGuessCorrect)
+            {
+                dto.CorrectGuesses++;
+                dto.GoldenCoins += CoinManager.AddCoins(dto.LevelDifficulty);
+                dto.GameScore += GameScoreManager.AddScoreForCorrectLetterGuess(dto.LevelDifficulty);
+            }
+            else
+            {
+                dto.FailedGuesses++;
+                dto.GameScore -= GameScoreManager.SubtractScoreForFailedLetterGuess(dto.LevelDifficulty);
+            }
+
+            DataAccess.UpdatePlayer(dto);
+
+            return dto;
         }
 
-        public static int AddCoin(LevelDifficulty levelDifficulty, string playerID)
+        public int PayForHint(string playerID, int levelID, int hintPosition)
         {
-            DataAccess dataAccess = new DataAccess();
+            Level currentLevel = DataAccess.GetLevelByID(levelID);
 
-            Player player = dataAccess.GetPlayerByID(playerID);
+            Player player = DataAccess.GetPlayerByID(playerID);
 
-            player.GoldenCoins += CoinManager.AddCoins(levelDifficulty);
+            player.GoldenCoins -= HintManager.SubtractHintPrice(currentLevel.Difficulty, hintPosition);
 
-            dataAccess.Save();
+            DataAccess.Save();
 
             return player.GoldenCoins;
         }
 
-        public static Level GetLevelByDifficulty(LevelDifficulty levelDifficulty)
+        public bool OpenHint(string playerID, int levelID, int hintID)
         {
-            DataAccess dataAccess = new DataAccess();
+            Level currentLevel = DataAccess.GetLevelByID(levelID);
 
-            return dataAccess.GetGameLevelByDifficulty(levelDifficulty);
-        }
-
-        public static Level GetLevelByID(int levelID)
-        {
-            DataAccess dataAccess = new DataAccess();
-
-            return dataAccess.GetLevelByID(levelID);
-        }
-
-        public static Player GetPlayer(String playerID)
-        {
-            DataAccess dataAccess = new DataAccess();
-
-            return dataAccess.GetPlayerByID(playerID);
-        }
-
-        public static Level GetRandomLevel(IEnumerable<int> levelSetIDs, IEnumerable<CompleteLevel> completeLevels)
-        {
-            Random random = new Random();
-
-            // .Any() returns true if collection have any members
-            if (!levelSetIDs.Any())
+            OpenHint openHint = new OpenHint
             {
-                levelSetIDs = LoadLevelSet(completeLevels);
+                HintID = hintID,
+                PlayerID = playerID
+            };
+
+            DataAccess.SaveOpenHint(openHint);
+
+            return true;
+        }
+
+
+        //--------------------------------------------------------------------------------------------------------
+        //------------------------------PRIVATE METHODS-----------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------
+
+        private List<Level> GetSameDifficultyLevels(IEnumerable<Level> incompleteLevels)
+        {
+            List<Level> output = new List<Level>();
+
+            int levelDifficultyNumVal = 0;
+
+            // runs through all incomplete levels looking for same difficulty levels
+            // if no level is available, it increases difficulty by one and searches again
+            while (output.Count == 0)
+            {
+                output = incompleteLevels.Where(x => x.Difficulty == (LevelDifficulty)levelDifficultyNumVal).ToList();
+                levelDifficultyNumVal++;
             }
 
-            int index = random.Next(0, levelSetIDs.Count() - 1);
-
-            int levelID = levelSetIDs.ElementAtOrDefault(index);
-
-            Level level = GetLevelByID(levelID);
-
-            return level;
+            return output;
         }
 
-        public static string HideAnswer(int length)
+        private List<Level> GetAllIncompleteLevels(IEnumerable<CompleteLevel> completeLevels)
         {
-            StringBuilder builder = new StringBuilder();
+            List<Level> allLevels = DataAccess.GetAllLevels();
 
-            return builder.Append('?', length).ToString();
+            List<Level> output = new List<Level>();
+
+            foreach (var level in allLevels)
+            {
+                CompleteLevel completeLevel = completeLevels.SingleOrDefault(x => x.LevelID == level.ID);
+
+                if (completeLevel == null)
+                {
+                    output.Add(level);
+                }
+            }
+
+            return output;
         }
 
-        // Load set of available levels that player have not completed yet with same difficulty starting from lowest
-        public static IEnumerable<int> LoadLevelSet(IEnumerable<CompleteLevel> completeLevels)
+        private string UpdateSecret(string answer, string secret, char key, out bool isGuessCorrect)
         {
-            IEnumerable<Level> incompleteLevels = GetAllIncompleteLevels(completeLevels);
-
-            IEnumerable<int> requiredLevels = GetSameDifficultyLevelIDs(incompleteLevels);
-
-            return requiredLevels;
-        }
-
-        public static string ProcessLetterGuess(char key, string hiddenAnswer, string openAnswer, out bool isGuessCorrect)
-        {
-            StringBuilder builder = new StringBuilder(hiddenAnswer);
+            StringBuilder builder = new StringBuilder(secret);
 
             isGuessCorrect = false;
 
-            for (int i = 0; i < openAnswer.Length; i++)
+            // if letter guessed is correct hidden answer gets updated with that letter
+            // only single letter gets captured
+            for (int i = 0; i < answer.Length; i++)
             {
-                if (openAnswer[i] == key && builder[i] != key)
+                if (answer[i] == key && builder[i] != key)
                 {
                     builder[i] = key;
                     isGuessCorrect = true;
                     break;
                 }
 
-                if (openAnswer[i] == char.ToLower(key) && builder[i] != char.ToLower(key))
+                if (answer[i] == char.ToLower(key) && builder[i] != char.ToLower(key))
                 {
                     builder[i] = char.ToLower(key);
                     isGuessCorrect = true;
@@ -140,113 +190,17 @@ namespace MyHangman.Services
             return builder.ToString();
         }
 
-        public static int UpdatePlayerGameScore(string playerID, LevelDifficulty levelDifficulty, bool isGuessCorrect, bool isWin, bool isLoss)
-        {
-            DataAccess dataAccess = new DataAccess();
-            Player player = dataAccess.GetPlayerByID(playerID);
+        //--------------------------------------------------------------------------------------------------------
+        //------------------------------STATIC METHODS-----------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------
 
-            if (isGuessCorrect)
-            {
-                player.GameScore = GameScoreManager.AddScoreForCorrectLetterGuess(levelDifficulty, player.GameScore);
-            }
-
-            if (!isGuessCorrect)
-            {
-                player.GameScore = GameScoreManager.SubtractScoreForFailedLetterGuess(levelDifficulty, player.GameScore);
-            }
-
-            if (isWin)
-            {
-                player.GameScore = GameScoreManager.AddScoreForCompletedLevel(levelDifficulty, player.GameScore);
-            }
-
-            if (isLoss)
-            {
-                player.GameScore = GameScoreManager.SubtractScoreForFailedLevel(levelDifficulty, player.GameScore);
-            }
-
-            dataAccess.Save();
-
-            return player.GameScore;
-        }
-
-        // returns all levels that players have not completed yet
-        private static IEnumerable<Level> GetAllIncompleteLevels(IEnumerable<CompleteLevel> completeLevels)
-        {
-            DataAccess dataAccess = new DataAccess();
-            List<Level> allLevels = dataAccess.GetAllLevels();
-            List<Level> incompleteLevels = new List<Level>();
-
-            foreach (var level in allLevels)
-            {
-                CompleteLevel completeLevel = completeLevels.SingleOrDefault(x => x.LevelID == level.ID);
-
-                if (completeLevel == null)
-                {
-                    incompleteLevels.Add(level);
-                }
-            }
-
-            return incompleteLevels;
-        }
-
-        // returns ID's of all incomplete levels that have required difficulty level
-        private static IEnumerable<int> GetSameDifficultyLevelIDs(IEnumerable<Level> incompleteLevels)
-        {
-            List<int> requiredLevels = new List<int>();
-
-            IEnumerable<Level> sameDifficultyLevels = new List<Level>();
-
-            int levelDifficultyNumVal = 0;
-
-            // .Any() returns true if collection have any members
-            // runs through all incomplete levels looking for same difficulty levels
-            // if no level is available, it increases difficulty by one and searches again
-            while (!sameDifficultyLevels.Any())
-            {
-                sameDifficultyLevels = incompleteLevels.Where(x => x.Difficulty == (LevelDifficulty)levelDifficultyNumVal).ToList();
-                levelDifficultyNumVal++;
-            }
-
-            foreach (var item in sameDifficultyLevels)
-            {
-                requiredLevels.Add(item.ID);
-            }
-
-            return requiredLevels;
-        }
-
-
-        // TODO redo this after db update
-        public static bool OpenHint(string playerID, int levelID, int hintID)
+        public static string GetGameProgress(int completeLevels)
         {
             DataAccess dataAccess = new DataAccess();
 
-            Level currentLevel = dataAccess.GetLevelByID(levelID);
+            int totalNumOfLevels = dataAccess.GetAllLevels().Count;
 
-            OpenHint openHint = new OpenHint();
-            
-            openHint.HintID = hintID;
-            openHint.PlayerID = playerID;
-
-            dataAccess.AddOpenHint(openHint);
-
-            return true;
-
-        }
-
-        public static int BuyHint(string playerID, int levelID, int hintPosition)
-        {
-            DataAccess dataAccess = new DataAccess();
-
-            Level currentLevel = dataAccess.GetLevelByID(levelID);
-
-            Player player = dataAccess.GetPlayerByID(playerID);
-            player.GoldenCoins = HintManager.PayForHint(player.GoldenCoins, currentLevel.Difficulty, hintPosition);
-
-            dataAccess.Save();
-
-            return player.GoldenCoins;
+            return $"{completeLevels + 1} of {totalNumOfLevels}";
         }
     }
 }

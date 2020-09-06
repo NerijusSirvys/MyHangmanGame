@@ -16,7 +16,6 @@ namespace MyHangman.ViewModels
         [Required]
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Passwords does not match")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "Password must be atleast 5 and characters long")]
         [Display(Name = "Confirm Password")]
         public string ConfirmPassword { get; set; }
     }

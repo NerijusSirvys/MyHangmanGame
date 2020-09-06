@@ -191,13 +191,27 @@
     <Content Include="Content\CSS\Hint-section-styles.css" />
     <Content Include="Content\CSS\Normalize.css" />
     <Content Include="Global.asax" />
-    <Content Include="Images\hangman-step-6.png" />
-    <Content Include="Images\hangman-step-5.png" />
-    <Content Include="Images\hangman-step-4.png" />
-    <Content Include="Images\hangman-step-3.png" />
-    <Content Include="Images\hangman-step-2.png" />
-    <Content Include="Images\hangman-step-1.png" />
-    <Content Include="Images\hangman-step-0.png" />
+    <Content Include="Images\hangman-step-0.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\hangman-step-1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\hangman-step-2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\hangman-step-3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\hangman-step-4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\hangman-step-5.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\hangman-step-6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="ProjectNotes.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -209,6 +223,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Data\GameDbContext.cs" />
+    <Compile Include="DTO\GameDTO.cs" />
+    <Compile Include="DTO\HintDTO.cs" />
+    <Compile Include="DTO\LetterProcessingDTO.cs" />
+    <Compile Include="DTO\LevelDTO.cs" />
+    <Compile Include="DTO\PlayerDTO.cs" />
     <Compile Include="Enums\LevelDifficulty.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -238,7 +257,6 @@
     <Compile Include="Services\EventState.cs" />
     <Compile Include="Services\GameEngine.cs" />
     <Compile Include="Services\GameScoreManager.cs" />
-    <Compile Include="Services\GoldenCoinManager.cs" />
     <Compile Include="Services\HintManager.cs" />
     <Compile Include="Services\Mapper.cs" />
     <Compile Include="ViewModels\GameStateVM.cs" />

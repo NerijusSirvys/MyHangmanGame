@@ -12,7 +12,7 @@ namespace MyHangman.Services
             EventState outcome = new EventState();
             if (result.Succeeded)
             {
-                outcome.Message = "Registration Complete";
+                outcome.Message = "Registration Complete. Go back and log in to play";
                 outcome.IsSuccess = true;
             }
             else

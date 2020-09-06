@@ -3,17 +3,8 @@
 <main class="content--center">
     <section class="section-status">
         <h1>@Model.Message</h1>
-        @if (Model.IsSuccess)
-        {
-            <div class="btn-wrapper">
-                @Html.ActionLink("Start Game", "Index", "Home", new { @class = "btn" })
-            </div>
-        }
-        else
-        {
-            <div class="btn-wrapper">
-                @Html.ActionLink("Back", "Welcome", "Account", null, new { @class = "btn" })
-            </div>
-        }
+        <div class="btn-wrapper">
+            @Html.ActionLink("Back", "Welcome", "Account", null, new { @class = "btn" })
+        </div>
     </section>
 </main>

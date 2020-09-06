@@ -1,9 +1,4 @@
 ﻿using MyHangman.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Caching;
 
 namespace MyHangman.Services
 {
@@ -15,26 +10,26 @@ namespace MyHangman.Services
         private const int BasePenaltyForLetter = 2; // TODO review this
         private const int BasePenaltyForLevel = 8;  // TODO review this
 
-        public static int AddScoreForCorrectLetterGuess(LevelDifficulty levelDifficulty, int currentScore)
+        public static int AddScoreForCorrectLetterGuess(LevelDifficulty levelDifficulty)
         {
-            return currentScore + (BaseScoreForLetter * (int)levelDifficulty);
+            return BaseScoreForLetter * (int)levelDifficulty;
         }
 
-        public static int AddScoreForCompletedLevel(LevelDifficulty levelDifficulty, int currentScore)
+        public static int AddScoreForCompletedLevel(LevelDifficulty levelDifficulty)
         {
-            return currentScore + (BaseScoreForLevel * (int)levelDifficulty);
+            return BaseScoreForLevel * (int)levelDifficulty;
         }
 
-        public static int SubtractScoreForFailedLetterGuess(LevelDifficulty levelDifficulty, int currentScore)
+        public static int SubtractScoreForFailedLetterGuess(LevelDifficulty levelDifficulty)
         {
-            int output = currentScore - (BasePenaltyForLetter * (int)levelDifficulty);
+            int output = BasePenaltyForLetter * (int)levelDifficulty;
 
             return output > 0 ? output : 0;
         }
 
-        public static int SubtractScoreForFailedLevel(LevelDifficulty levelDifficulty, int currentScore)
+        public static int SubtractScoreForFailedLevel(LevelDifficulty levelDifficulty)
         {
-            int output = currentScore - (BasePenaltyForLevel * (int)levelDifficulty);
+            int output = BasePenaltyForLevel * (int)levelDifficulty;
 
             return output > 0 ? output : 0;
         }
