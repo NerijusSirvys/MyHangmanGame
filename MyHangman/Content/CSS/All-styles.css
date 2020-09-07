@@ -2,9 +2,16 @@
      GENERAL STYLES
 \-------------------*/
 
-.content--center {
-    display: flex;
-    justify-content: space-around;
+.game-over-img{
+    height: 22vw;
+}
+
+.spacer-horizontal{
+    width: 60%;
+}
+
+.spacer-vertical{
+    height: 1vw;
 }
 
 .error-message {
@@ -17,8 +24,11 @@
     align-items: flex-start;
 }
 
-header p {
+header p,
+header a {
     font-size: 1.6vw;
+    margin: 1% 5%;
+    color: ghostwhite;
 }
 
 .statistics {

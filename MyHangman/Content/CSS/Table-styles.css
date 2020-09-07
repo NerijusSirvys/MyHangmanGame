@@ -1,0 +1,41 @@
+﻿
+table {
+    margin: auto;
+    width: 40vw;
+    border-collapse: collapse;
+    table-layout: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+thead {
+    height: 3vw;
+    background-color: #808080;
+    border-radius: 50px;
+    color: ghostwhite;
+    
+}
+
+    thead tr {
+        margin: auto;
+    }
+
+tbody {
+    height: 20vw;
+    overflow: auto;
+}
+
+    tbody tr {
+        border-bottom: 1px solid #808080;
+    }
+
+    tbody tr:hover {
+        box-shadow: inset 0px -50px 22px -50px #969696;
+    }
+
+th,
+td {
+    text-align: center;
+    width: 11em;
+    padding: 2.5%;
+}

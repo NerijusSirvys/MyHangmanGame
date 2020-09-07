@@ -4,8 +4,6 @@
     margin: 0;
 }
 
-
-
 .riddle-section {
     grid-area: riddle;
     margin: 0;
@@ -20,11 +18,15 @@
     grid-area: image;
 }
 
-
-
 .statistics-section {
     grid-area: statistics;
     justify-content: start;
+}
+.text-section{
+    grid-area: text;
+    margin: 0;
+    height: 100%;
+    
 }
 
 .main-grid-area {
@@ -34,4 +36,12 @@
     column-gap: 2vw;
     grid-template-areas: "header header" "riddle image" "hints image" "keyboard statistics";
     justify-content: center;
+}
+
+.game-over-grid-area{
+    display: grid;
+    grid-template-columns: 85%;
+    grid-template-rows: 3vw 44vw;
+    grid-template-areas: "header" "text";
+        
 }

@@ -13,9 +13,15 @@ body {
 }
 
 header {
+    display: flex;
+    justify-content: center;
     grid-area: header;
-    background-color: #A4A2A8;
+    background-color: #808080;
     height: auto;
+    color: ghostwhite;
+    font-weight: 600;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
 
 main {
@@ -23,6 +29,10 @@ main {
     height: 47vw;
     margin: auto;
     background-color: ghostwhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 section {
@@ -42,24 +52,31 @@ input {
     text-align: center;
 }
 
-label {
+label{
     letter-spacing: 3px;
     margin-bottom: 1%;
     font-family: 'Fredericka the Great', cursive;
+    font-weight: 300;
 }
 
-p {
+a{
+    text-decoration: none;
+    color: black;
+}
+
+p,
+tr{
     margin: 1% 5%;
     font-size: 1.2vw;
 }
 
 h1 {
     font-size: 6vw;
-    letter-spacing: 10px;
+    letter-spacing: 0.03em;
     font-family: 'Fredericka the Great', cursive;
     font-weight: 500;
     text-align: center;
-    margin: 15px;
+    margin: 1%;
 }
 
 h2 {

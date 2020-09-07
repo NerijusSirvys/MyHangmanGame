@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MyHangman.ViewModels.LeaderBoardEntryVM>
+
+
+<main class="leaderBoard-table-main">
+    <section class="leaderBoard-table-section">
+        <h1>Leader Board</h1>
+        <div class="spacer-vertical">
+
+        </div>
+        <table>
+            <colgroup>
+                <col />
+                <col />
+                <col />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.PlayerName)</th>
+                    <th>@Html.DisplayNameFor(x => x.GameScore)</th>
+                    <th>@Html.DisplayNameFor(x => x.LevelsCompleted)</th>
+                </tr>
+
+            </thead>
+            @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => item.PlayerName)</td>
+                        <td>@Html.DisplayFor(x => item.GameScore)</td>
+                        <td>@Html.DisplayFor(x => item.LevelsCompleted)</td>
+                    </tr>
+                }
+        </table>
+    </section>
+    <div class=" btn-wrapper">
+        @Html.ActionLink("Finish", "LogOut", "Account", null, new { @class = "btn" })
+    </div>
+</main>
+

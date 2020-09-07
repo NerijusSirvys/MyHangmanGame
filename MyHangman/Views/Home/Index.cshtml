@@ -11,6 +11,10 @@
 <main class="main-grid-area">
     <header class="header">
         <p>Hello @User.Identity.Name</p>
+        <div class="spacer-horizontal">
+
+        </div>
+        @Html.ActionLink("Log Off", "LogOut", "Account")
     </header>
 
     <section class="riddle-section">

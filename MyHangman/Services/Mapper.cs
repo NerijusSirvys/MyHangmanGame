@@ -1,6 +1,8 @@
-﻿using MyHangman.DTO;
+﻿using Microsoft.Owin.Security;
+using MyHangman.DTO;
 using MyHangman.Models;
 using MyHangman.ViewModels;
+using System;
 using System.Collections.Generic;
 
 namespace MyHangman.Services
@@ -69,6 +71,18 @@ namespace MyHangman.Services
                 Answer = model.OpenAnswer,
                 LevelDifficulty = model.LevelDifficulty
             };
+        }
+
+        public static List<LeaderBoardEntryVM> MapDTOToVM(IEnumerable<LeaderBoardEntryDTO> leaderBoardEntries)
+        {
+            List<LeaderBoardEntryVM> output = new List<LeaderBoardEntryVM>();
+
+            foreach (var item in leaderBoardEntries)
+            {
+                output.Add(new LeaderBoardEntryVM { GameScore = item.GameScore, LevelsCompleted = item.LevelsCompleted, PlayerName = item.PlayerName });
+            }
+
+            return output;
         }
 
         public static LevelDTO MapLevelToDTO(Level level)

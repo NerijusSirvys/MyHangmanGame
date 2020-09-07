@@ -67,9 +67,7 @@ namespace MyHangman.Services
 
             int index = Random.Next(0, LevelsToComplete.Count);
 
-            Level lvl = LevelsToComplete.ElementAtOrDefault(index);
-
-            return lvl;
+            return LevelsToComplete.ElementAtOrDefault(index);
         }
 
         public LetterProcessingDTO ProcessLetterGuess(LetterProcessingDTO dto, char key)
@@ -89,6 +87,22 @@ namespace MyHangman.Services
             }
 
             DataAccess.UpdatePlayer(dto);
+
+            return dto;
+        }
+
+        public List<LeaderBoardEntryDTO> ConstructLeaderBoard()
+        {
+            List<Player> players = DataAccess.GetAllPlayers();
+
+            if (players == null) return null;
+
+            List<LeaderBoardEntryDTO> dto = new List<LeaderBoardEntryDTO>();
+
+            foreach (var item in players)
+            {
+                dto.Add(new LeaderBoardEntryDTO { GameScore = item.GameScore, PlayerName = item.UserName, LevelsCompleted = item.CompleteLevels.Count });
+            }
 
             return dto;
         }

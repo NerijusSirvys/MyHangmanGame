@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNet.Identity;
 using MyHangman.DTO;
+using MyHangman.Models;
 using MyHangman.Services;
 using MyHangman.ViewModels;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace MyHangman.Controllers
@@ -15,7 +17,6 @@ namespace MyHangman.Controllers
             GameEngine = new GameEngine();
         }
 
-        // done
         public ActionResult BeginNewLevel()
         {
             GameDTO gameDTO = GameEngine.ConstructGameModel(User.Identity.GetUserId());
@@ -76,6 +77,15 @@ namespace MyHangman.Controllers
             model.Hints.Find(x => x.ID == hintID).IsOpen = GameEngine.OpenHint(User.Identity.GetUserId(), model.LevelID, hintID);
 
             return View("Index", model);
+        }
+
+        public ActionResult LeaderBoard()
+        {
+            List<LeaderBoardEntryDTO> dto = GameEngine.ConstructLeaderBoard();
+
+            List<LeaderBoardEntryVM> model = Mapper.MapDTOToVM(dto);
+
+            return View(model);
         }
     }
 }

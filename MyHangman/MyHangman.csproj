@@ -190,6 +190,7 @@
     <Content Include="Content\CSS\Global-styles.css" />
     <Content Include="Content\CSS\Hint-section-styles.css" />
     <Content Include="Content\CSS\Normalize.css" />
+    <Content Include="Content\CSS\Table-styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\hangman-step-0.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -225,6 +226,7 @@
     <Compile Include="Data\GameDbContext.cs" />
     <Compile Include="DTO\GameDTO.cs" />
     <Compile Include="DTO\HintDTO.cs" />
+    <Compile Include="DTO\LeaderBoardEntryDTO.cs" />
     <Compile Include="DTO\LetterProcessingDTO.cs" />
     <Compile Include="DTO\LevelDTO.cs" />
     <Compile Include="DTO\PlayerDTO.cs" />
@@ -262,6 +264,7 @@
     <Compile Include="ViewModels\GameStateVM.cs" />
     <Compile Include="ViewModels\GameVM.cs" />
     <Compile Include="ViewModels\HintVM.cs" />
+    <Compile Include="ViewModels\LeaderBoardEntryVM.cs" />
     <Compile Include="ViewModels\LoginVM.cs" />
     <Compile Include="ViewModels\RegisterVM.cs" />
   </ItemGroup>
@@ -281,6 +284,7 @@
     <Content Include="Views\Shared\_Hints.cshtml" />
     <Content Include="Views\Shared\_HiddenAnswer.cshtml" />
     <Content Include="Views\Home\GameMessage.cshtml" />
+    <Content Include="Views\Home\LeaderBoard.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

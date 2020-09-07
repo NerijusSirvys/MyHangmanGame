@@ -1,6 +1,7 @@
 ﻿using MyHangman.Data;
 using MyHangman.DTO;
 using MyHangman.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -20,31 +21,10 @@ namespace MyHangman.Services
         {
             return context.Users.Include(x => x.CompleteLevels).Where(x => x.Id == userID).FirstOrDefault();
         }
-
-        public Level GetLevelByID(int levelID)
+        public List<Player> GetAllPlayers()
         {
-            return context.Levels.Include(x => x.Hints)
-                                 .Include(x => x.OpenHints)
-                                 .Where(x => x.ID == levelID)
-                                 .SingleOrDefault();
+            return context.Users.Include(x => x.CompleteLevels).OrderByDescending(x => x.GameScore).ToList();
         }
-
-        public List<Level> GetAllLevels()
-        {
-            return context.Levels.Include(x => x.Hints).Include(x => x.OpenHints).ToList();
-        }
-
-        public OpenHint GetOpenHint(string playerID, int hintID)
-        {
-            return context.OpenHints.SingleOrDefault(x => x.PlayerID == playerID && x.HintID == hintID);
-        }
-
-        public void SaveOpenHint(OpenHint openHint)
-        {
-            context.OpenHints.Add(openHint);
-            context.SaveChanges();
-        }
-
         public void UpdatePlayer(LetterProcessingDTO dto)
         {
             Player player = GetPlayerByID(dto.PlayerID);
@@ -55,10 +35,32 @@ namespace MyHangman.Services
             Save();
         }
 
+        public Level GetLevelByID(int levelID)
+        {
+            return context.Levels.Include(x => x.Hints)
+                                 .Include(x => x.OpenHints)
+                                 .Where(x => x.ID == levelID)
+                                 .SingleOrDefault();
+        }
+        public List<Level> GetAllLevels()
+        {
+            return context.Levels.Include(x => x.Hints).Include(x => x.OpenHints).ToList();
+        }
+
+        public OpenHint GetOpenHint(string playerID, int hintID)
+        {
+            return context.OpenHints.SingleOrDefault(x => x.PlayerID == playerID && x.HintID == hintID);
+        }
+        public void SaveOpenHint(OpenHint openHint)
+        {
+            context.OpenHints.Add(openHint);
+            context.SaveChanges();
+        }
 
         public void Save()
         {
             context.SaveChanges();
         }
+
     }
 }

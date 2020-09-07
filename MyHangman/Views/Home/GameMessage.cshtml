@@ -1,7 +1,14 @@
 ﻿@model MyHangman.ViewModels.GameStateVM
 
-<main class="content--center">
-    <section class="section-status">
+<main class="game-over-grid-area">
+    <header class="header">
+        <p>Hello @User.Identity.Name</p>
+        <div class="spacer-horizontal">
+
+        </div>
+        @Html.ActionLink("Log Off", "LogOut", "Account")
+    </header>
+    <section class="section-status text-section">
         <h1>@Model.Message</h1>
         @if (Model.IsWin)
         {
@@ -10,12 +17,13 @@
             </div>
         }
 
-        @if(Model.IsLoss)
+        @if (Model.IsLoss)
         {
-            <img src="~/Images/hangman-step-6.png" alt="Alternate Text" />
+            <img class="game-over-img" src="~/Images/hangman-step-6.png" alt="Alternate Text" />
             <div class="btn-wrapper">
                 @Html.ActionLink("Finish", "LogOut", "Account", null, new { @class = "btn" })
                 @Html.ActionLink("Try Again", "BeginNewLevel", "Home", null, new { @class = "btn" })
+                @Html.ActionLink("Leader Board", "LeaderBoard", "Home", null, new { @class = "btn" })
             </div>
         }
     </section>
