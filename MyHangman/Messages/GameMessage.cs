@@ -1,6 +1,6 @@
-﻿namespace MyHangman.ViewModels
+﻿namespace MyHangman.Messages
 {
-    public class GameStateVM
+    public class GameMessage : IMessage
     {
         public string Message { get; set; }
         public bool IsWin { get; set; }

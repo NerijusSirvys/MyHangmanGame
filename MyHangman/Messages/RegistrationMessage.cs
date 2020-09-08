@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNet.Identity;
 
-namespace MyHangman.Services
+namespace MyHangman.Messages
 {
-    public class EventState
+    public class RegistrationMessage : IMessage
     {
         public string Message { get; set; }
         public bool IsSuccess { get; set; }
 
-        internal static EventState GetEventState(IdentityResult result)
+        public static RegistrationMessage GetRegistrationMessage(IdentityResult result)
         {
-            EventState outcome = new EventState();
+            RegistrationMessage outcome = new RegistrationMessage();
             if (result.Succeeded)
             {
                 outcome.Message = "Registration Complete. Go back and log in to play";

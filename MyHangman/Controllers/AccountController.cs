@@ -2,8 +2,8 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MyHangman.Managers;
+using MyHangman.Messages;
 using MyHangman.Models;
-using MyHangman.Services;
 using MyHangman.ViewModels;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -56,8 +56,8 @@ namespace MyHangman.Controllers
             Player player = await UserManager.FindAsync(model.UserName, model.Password);
             if (player == null)
             {
-                EventState eventState = new EventState { IsSuccess = false, Message = "Incorrect pasword or user name" };
-                return View("Status", eventState);
+                IMessage registrationMessage = new RegistrationMessage { IsSuccess = false, Message = "Incorrect pasword or user name" };
+                return View("Status", registrationMessage);
             }
 
             ClaimsIdentity identity = await UserManager.CreateIdentityAsync(player, DefaultAuthenticationTypes.ApplicationCookie);
@@ -93,9 +93,9 @@ namespace MyHangman.Controllers
                 }
                 else
                 {
-                    EventState eventState = EventState.GetEventState(result);
+                    IMessage registrationMessage = RegistrationMessage.GetRegistrationMessage(result);
 
-                    return View("Status", eventState);
+                    return View("Status", registrationMessage);
                 }
             }
             return View(model);

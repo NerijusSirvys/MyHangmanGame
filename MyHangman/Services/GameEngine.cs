@@ -33,6 +33,11 @@ namespace MyHangman.Services
             Player player = DataAccess.GetPlayerByID(playerID);
             Level level = GetRandomLevel(player.CompleteLevels);
 
+            if(level == null)
+            {
+                return null;
+            }
+
             gameDTO.Player = Mapper.MapPlayerToDTO(player);
             gameDTO.Level = Mapper.MapLevelToDTO(level);
 
@@ -59,6 +64,11 @@ namespace MyHangman.Services
         public Level GetRandomLevel(IEnumerable<CompleteLevel> completeLevels)
         {
             List<Level> incompleteLevels = GetAllIncompleteLevels(completeLevels);
+
+            if(incompleteLevels.Count == 0)
+            {
+                return null;
+            }
 
             if (LevelsToComplete.Count == 0)
             {
@@ -148,11 +158,19 @@ namespace MyHangman.Services
 
             // runs through all incomplete levels looking for same difficulty levels
             // if no level is available, it increases difficulty by one and searches again
-            while (output.Count == 0)
+
+
+            do
             {
+                if (levelDifficultyNumVal == Enum.GetNames(typeof(LevelDifficulty)).Length)
+                {
+                    break;
+                }
+
                 output = incompleteLevels.Where(x => x.Difficulty == (LevelDifficulty)levelDifficultyNumVal).ToList();
                 levelDifficultyNumVal++;
-            }
+
+            } while (output.Count == 0);
 
             return output;
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using MyHangman.DTO;
+using MyHangman.Messages;
 using MyHangman.Models;
 using MyHangman.Services;
 using MyHangman.ViewModels;
@@ -21,6 +22,12 @@ namespace MyHangman.Controllers
         {
             GameDTO gameDTO = GameEngine.ConstructGameModel(User.Identity.GetUserId());
 
+            if(gameDTO == null)
+            {
+                IMessage gameMessage = new GameCompleteMessage("All levels completed !!!");
+                return View("Status", gameMessage);
+            }
+
             GameVM viewModel = Mapper.MapGameVM(gameDTO);
 
             return View("Index", viewModel);
@@ -40,10 +47,10 @@ namespace MyHangman.Controllers
             {
                 GameEngine.AddWinToPlayer(User.Identity.GetUserId(), model.LevelID);
 
-                GameStateVM gameState = new GameStateVM
+                GameMessage gameState = new GameMessage
                 {
                     IsWin = true,
-                    Message = "Level complete...!!!"
+                    Message = $"Secret word was \"{model.OpenAnswer}\".\nLevel complete...!!!"
                 };
 
                 return View("GameMessage", gameState);
@@ -51,7 +58,7 @@ namespace MyHangman.Controllers
 
             if (model.IsLoss)
             {
-                GameStateVM gameState = new GameStateVM
+                GameMessage gameState = new GameMessage
                 {
                     IsLoss = true,
                     Message = "You run out of guesses. Game Over...!!!"
@@ -79,6 +86,7 @@ namespace MyHangman.Controllers
             return View("Index", model);
         }
 
+        [AllowAnonymous]
         public ActionResult LeaderBoard()
         {
             List<LeaderBoardEntryDTO> dto = GameEngine.ConstructLeaderBoard();

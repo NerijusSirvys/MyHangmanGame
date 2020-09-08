@@ -12,7 +12,6 @@
     <header class="header">
         <p>Hello @User.Identity.Name</p>
         <div class="spacer-horizontal">
-
         </div>
         @Html.ActionLink("Log Off", "LogOut", "Account")
     </header>
@@ -23,7 +22,7 @@
     </section>
 
     <section class="hint-section">
-      @Html.Partial("_Hints")
+        @Html.Partial("_Hints")
     </section>
 
     <section class="keyboard-section">
@@ -62,7 +61,7 @@
                 <input class="btn key-btn" type="submit" name="key" value="M" />
             </div>
 
-            @Html.HiddenFor(x=>x.LevelID)
+            @Html.HiddenFor(x => x.LevelID)
             @Html.HiddenFor(x => x.Riddle)
             @Html.HiddenFor(x => x.HiddenAnswer)
             @Html.HiddenFor(x => x.OpenAnswer)
@@ -90,7 +89,7 @@
 
     <section class="statistics-section content--left">
         <div class="statistics">
-            <p>@Html.LabelFor(x=>x.GameScore): <span>@Html.DisplayFor(x=>x.GameScore)</span></p>
+            <p>@Html.LabelFor(x => x.GameScore): <span>@Html.DisplayFor(x => x.GameScore)</span></p>
         </div>
         <div class="statistics">
             <p>@Html.LabelFor(x => x.GoldenCoins): <span class="gold-coins">@Html.DisplayFor(x => x.GoldenCoins)</span></p>

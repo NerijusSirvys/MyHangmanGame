@@ -1,4 +1,4 @@
-﻿using MyHangman.Services;
+﻿using MyHangman.Messages;
 using System.Web.Mvc;
 
 namespace MyHangman.Controllers
@@ -10,14 +10,14 @@ namespace MyHangman.Controllers
         // Different variations if registration is complete and if error occured for any reason
         public ActionResult StatusPage()
         {
-            EventState stateSuccess = new EventState { IsSuccess = true, Message = "Registration Complete" };
-            EventState stateFailed = new EventState { IsSuccess = false, Message = "Error. Registration cancelled" };
+            RegistrationMessage stateSuccess = new RegistrationMessage { IsSuccess = true, Message = "Registration Complete" };
+            RegistrationMessage stateFailed = new RegistrationMessage { IsSuccess = false, Message = "Error. Registration cancelled" };
             return View("Status", stateSuccess);
         }
 
         public ActionResult GameOverPage()
         {
-            EventState eventState = new EventState
+            RegistrationMessage eventState = new RegistrationMessage
             {
                 IsSuccess = false,
                 Message = "You run out of guesses. Game Over..."

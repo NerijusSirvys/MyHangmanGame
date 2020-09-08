@@ -235,6 +235,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Managers\UserManager.cs" />
+    <Compile Include="Messages\GameCompleteMessage.cs" />
+    <Compile Include="Messages\IMessage.cs" />
     <Compile Include="Migrations\202008200554567_initial.cs" />
     <Compile Include="Migrations\202008200554567_initial.designer.cs">
       <DependentUpon>202008200554567_initial.cs</DependentUpon>
@@ -256,12 +258,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CoinManager.cs" />
     <Compile Include="Services\DataAccess.cs" />
-    <Compile Include="Services\EventState.cs" />
+    <Compile Include="Messages\RegistrationMessage.cs" />
     <Compile Include="Services\GameEngine.cs" />
     <Compile Include="Services\GameScoreManager.cs" />
     <Compile Include="Services\HintManager.cs" />
     <Compile Include="Services\Mapper.cs" />
-    <Compile Include="ViewModels\GameStateVM.cs" />
+    <Compile Include="Messages\GameMessage.cs" />
     <Compile Include="ViewModels\GameVM.cs" />
     <Compile Include="ViewModels\HintVM.cs" />
     <Compile Include="ViewModels\LeaderBoardEntryVM.cs" />
