@@ -1,8 +1,6 @@
-﻿using Microsoft.Owin.Security;
-using MyHangman.DTO;
+﻿using MyHangman.DTO;
 using MyHangman.Models;
 using MyHangman.ViewModels;
-using System;
 using System.Collections.Generic;
 
 namespace MyHangman.Services

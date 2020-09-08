@@ -5,7 +5,7 @@ namespace MyHangman.Services
 {
     public static class HintManager
     {
-        private const double baseHintCost = 1.3;
+        private const double baseHintCost = 4;
 
         public static int CalculatePrice(LevelDifficulty levelDifficulty, int hintPosition)
         {

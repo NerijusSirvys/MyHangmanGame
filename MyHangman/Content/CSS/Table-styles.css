@@ -1,5 +1,4 @@
-﻿
-table {
+﻿table {
     margin: auto;
     width: 40vw;
     border-collapse: collapse;
@@ -13,7 +12,6 @@ thead {
     background-color: #808080;
     border-radius: 50px;
     color: ghostwhite;
-    
 }
 
     thead tr {
@@ -29,9 +27,9 @@ tbody {
         border-bottom: 1px solid #808080;
     }
 
-    tbody tr:hover {
-        box-shadow: inset 0px -50px 22px -50px #969696;
-    }
+        tbody tr:hover {
+            box-shadow: inset 0px -50px 22px -50px #969696;
+        }
 
 th,
 td {

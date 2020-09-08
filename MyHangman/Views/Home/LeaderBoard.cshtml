@@ -5,7 +5,6 @@
     <section class="leaderBoard-table-section">
         <h1>Leader Board</h1>
         <div class="spacer-vertical">
-
         </div>
         <table>
             <colgroup>
@@ -19,7 +18,6 @@
                     <th>@Html.DisplayNameFor(x => x.GameScore)</th>
                     <th>@Html.DisplayNameFor(x => x.LevelsCompleted)</th>
                 </tr>
-
             </thead>
             @foreach (var item in Model)
                 {
@@ -35,4 +33,3 @@
         @Html.ActionLink("Finish", "LogOut", "Account", null, new { @class = "btn" })
     </div>
 </main>
-

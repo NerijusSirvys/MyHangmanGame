@@ -249,6 +249,10 @@
     <Compile Include="Migrations\202009010208290_addedOpenHintsToPlayer.designer.cs">
       <DependentUpon>202009010208290_addedOpenHintsToPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009081307021_removedUnusedPlayer_IdColumn.cs" />
+    <Compile Include="Migrations\202009081307021_removedUnusedPlayer_IdColumn.designer.cs">
+      <DependentUpon>202009081307021_removedUnusedPlayer_IdColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CompleteLevel.cs" />
     <Compile Include="Models\Hint.cs" />
@@ -306,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009010208290_addedOpenHintsToPlayer.resx">
       <DependentUpon>202009010208290_addedOpenHintsToPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009081307021_removedUnusedPlayer_IdColumn.resx">
+      <DependentUpon>202009081307021_removedUnusedPlayer_IdColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

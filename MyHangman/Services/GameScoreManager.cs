@@ -7,8 +7,8 @@ namespace MyHangman.Services
         private const int BaseScoreForLetter = 5;
         private const int BaseScoreForLevel = 20;
 
-        private const int BasePenaltyForLetter = 2; // TODO review this
-        private const int BasePenaltyForLevel = 8;  // TODO review this
+        private const int BasePenaltyForLetter = 2;
+        private const int BasePenaltyForLevel = 8;
 
         public static int AddScoreForCorrectLetterGuess(LevelDifficulty levelDifficulty)
         {

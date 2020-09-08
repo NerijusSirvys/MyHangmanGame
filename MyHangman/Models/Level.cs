@@ -10,6 +10,5 @@ namespace MyHangman.Models
         public string Answer { get; set; }
         public LevelDifficulty Difficulty { get; set; }
         public List<Hint> Hints { get; set; }
-        public List<OpenHint> OpenHints { get; set; }
     }
 }

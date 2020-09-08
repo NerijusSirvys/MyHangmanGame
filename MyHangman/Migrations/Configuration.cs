@@ -35,7 +35,6 @@
                 Riddle = "This is dummy level first 1 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.VeryEasy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -48,7 +47,6 @@
                 Riddle = "This is dummy level first 2 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.VeryEasy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -61,7 +59,6 @@
                 Riddle = "This is dummy level first 3 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.VeryEasy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -74,7 +71,6 @@
                 Riddle = "This is dummy level first 4 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.VeryEasy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -87,7 +83,6 @@
                 Riddle = "This is dummy level first 5 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.VeryEasy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -100,7 +95,6 @@
                 Riddle = "This is dummy level first 6 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.VeryEasy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -113,7 +107,6 @@
                 Riddle = "This is dummy level first 7 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.VeryEasy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -126,7 +119,6 @@
                 Riddle = "This is dummy level first 8 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.VeryEasy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -139,7 +131,6 @@
                 Riddle = "This is dummy level first 9 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.VeryEasy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -152,7 +143,6 @@
                 Riddle = "This is dummy level first 10 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.VeryEasy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -166,7 +156,6 @@
                 Riddle = "This is dummy level second 1 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Easy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -179,7 +168,6 @@
                 Riddle = "This is dummy level second 2 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Easy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -192,7 +180,6 @@
                 Riddle = "This is dummy level second 3 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Easy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -205,7 +192,6 @@
                 Riddle = "This is dummy level second 4 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Easy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -218,7 +204,6 @@
                 Riddle = "This is dummy level second 5 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Easy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -231,7 +216,6 @@
                 Riddle = "This is dummy level second 6 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Easy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -244,7 +228,6 @@
                 Riddle = "This is dummy level second 7 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Easy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -257,7 +240,6 @@
                 Riddle = "This is dummy level second 8 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Easy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -270,7 +252,6 @@
                 Riddle = "This is dummy level second 9 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Easy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -283,7 +264,6 @@
                 Riddle = "This is dummy level second 10 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Easy,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -297,7 +277,6 @@
                 Riddle = "This is dummy level third 1 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Medium,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -310,7 +289,6 @@
                 Riddle = "This is dummy level third 2 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Medium,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -323,7 +301,6 @@
                 Riddle = "This is dummy level third 3 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Medium,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -336,7 +313,6 @@
                 Riddle = "This is dummy level third 4 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Medium,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -349,7 +325,6 @@
                 Riddle = "This is dummy level third 5 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Medium,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -362,7 +337,6 @@
                 Riddle = "This is dummy level third 6 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Medium,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -375,7 +349,6 @@
                 Riddle = "This is dummy level third 7 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Medium,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -388,7 +361,6 @@
                 Riddle = "This is dummy level third 8 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Medium,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -401,7 +373,6 @@
                 Riddle = "This is dummy level third 9 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Medium,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -414,7 +385,6 @@
                 Riddle = "This is dummy level third 10 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Medium,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -428,7 +398,6 @@
                 Riddle = "This is dummy level fourth 1 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Hard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -441,7 +410,6 @@
                 Riddle = "This is dummy level fourth 2 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Hard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -454,7 +422,6 @@
                 Riddle = "This is dummy level fourth 3 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Hard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -467,7 +434,6 @@
                 Riddle = "This is dummy level fourth 4 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Hard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -480,7 +446,6 @@
                 Riddle = "This is dummy level fourth 5 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Hard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -493,7 +458,6 @@
                 Riddle = "This is dummy level fourth 6 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Hard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -506,7 +470,6 @@
                 Riddle = "This is dummy level fourth 7 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Hard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -519,7 +482,6 @@
                 Riddle = "This is dummy level fourth 8 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Hard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -532,7 +494,6 @@
                 Riddle = "This is dummy level fourth 9 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Hard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -545,7 +506,6 @@
                 Riddle = "This is dummy level fourth 10 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.Hard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -559,7 +519,6 @@
                 Riddle = "This is dummy level fifth 1 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.veryHard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -572,7 +531,6 @@
                 Riddle = "This is dummy level fifth 2 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.veryHard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -585,7 +543,6 @@
                 Riddle = "This is dummy level fifth 3 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.veryHard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -598,7 +555,6 @@
                 Riddle = "This is dummy level fifth 4 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.veryHard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -611,7 +567,6 @@
                 Riddle = "This is dummy level fifth 5 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.veryHard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -624,7 +579,6 @@
                 Riddle = "This is dummy level fifth 6 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.veryHard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -637,7 +591,6 @@
                 Riddle = "This is dummy level fifth 7 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.veryHard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -650,7 +603,6 @@
                 Riddle = "This is dummy level fifth 8 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.veryHard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -663,7 +615,6 @@
                 Riddle = "This is dummy level fifth 9 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.veryHard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},
@@ -676,7 +627,6 @@
                 Riddle = "This is dummy level fifth 10 riddle",
                 Answer = "dummyAnswer",
                 Difficulty = Enums.LevelDifficulty.veryHard,
-                OpenHints = new List<OpenHint>(),
                 Hints = new List<Hint>
                 {
                     new Hint{Body = "Dummy hint one"},

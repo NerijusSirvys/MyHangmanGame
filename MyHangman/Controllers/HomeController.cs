@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using MyHangman.DTO;
 using MyHangman.Messages;
-using MyHangman.Models;
 using MyHangman.Services;
 using MyHangman.ViewModels;
 using System.Collections.Generic;
@@ -22,7 +21,7 @@ namespace MyHangman.Controllers
         {
             GameDTO gameDTO = GameEngine.ConstructGameModel(User.Identity.GetUserId());
 
-            if(gameDTO == null)
+            if (gameDTO == null)
             {
                 IMessage gameMessage = new GameCompleteMessage("All levels completed !!!");
                 return View("Status", gameMessage);

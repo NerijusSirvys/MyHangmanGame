@@ -53,20 +53,20 @@ input {
     text-align: center;
 }
 
-label{
+label {
     letter-spacing: 3px;
     margin-bottom: 1%;
     font-family: 'Fredericka the Great', cursive;
     font-weight: 300;
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
 }
 
 p,
-tr{
+tr {
     margin: 1% 5%;
     font-size: 1.2vw;
 }
