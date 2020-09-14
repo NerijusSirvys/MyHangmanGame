@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<MyHangman.ViewModels.LeaderBoardEntryVM>
 
+@{ 
+    int counter = 1;
+}
 
 <main class="leaderBoard-table-main">
     <section class="leaderBoard-table-section">
@@ -14,6 +17,7 @@
             </colgroup>
             <thead>
                 <tr>
+                    <th>Position</th>
                     <th>@Html.DisplayNameFor(x => x.PlayerName)</th>
                     <th>@Html.DisplayNameFor(x => x.GameScore)</th>
                     <th>@Html.DisplayNameFor(x => x.LevelsCompleted)</th>
@@ -22,11 +26,13 @@
             @foreach (var item in Model)
                 {
                     <tr>
+                        <td>@counter</td>
                         <td>@Html.DisplayFor(x => item.PlayerName)</td>
                         <td>@Html.DisplayFor(x => item.GameScore)</td>
                         <td>@Html.DisplayFor(x => item.LevelsCompleted)</td>
                     </tr>
-                }
+                counter++;
+            }
         </table>
     </section>
     <div class=" btn-wrapper">

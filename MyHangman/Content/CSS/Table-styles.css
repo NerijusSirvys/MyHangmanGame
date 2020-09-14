@@ -1,6 +1,6 @@
 ﻿table {
     margin: auto;
-    width: 40vw;
+    width: 55vw;
     border-collapse: collapse;
     table-layout: fixed;
     display: flex;
@@ -8,7 +8,7 @@
 }
 
 thead {
-    height: 3vw;
+    height: 4vw;
     background-color: #808080;
     border-radius: 50px;
     color: ghostwhite;
