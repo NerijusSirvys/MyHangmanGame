@@ -24,14 +24,16 @@ namespace MyHangman.Services
         {
             int output = BasePenaltyForLetter * (int)levelDifficulty;
 
-            return output > 0 ? output : 0;
+            return output;
+            //return output > 0 ? output : 0;
         }
 
         public static int SubtractScoreForFailedLevel(LevelDifficulty levelDifficulty)
         {
             int output = BasePenaltyForLevel * (int)levelDifficulty;
 
-            return output > 0 ? output : 0;
+            return output;
+            //return output > 0 ? output : 0;
         }
     }
 }

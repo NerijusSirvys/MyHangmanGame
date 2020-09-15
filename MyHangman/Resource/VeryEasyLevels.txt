@@ -1,0 +1,32 @@
+﻿Sand,I’m found on a golf course but I’m not a golf ball,I’m a natural material but I’m not a blade of grass,I can be made into a castle but I’m not a brick,I’m grainy but I’m not an old photograph
+Bed,I have sheets but I’m not a binder,I’m sometimes a king but I don’t have a crown,I’m used every night but I’m not a light,I have a room named after me but I’m not a bath
+Car,I have seats but I’m not a classroom,I have mirrors but I’m not a barber shop,I have windows but I’m not a bathroom,I have a trunk but I’m not an elephant		
+Frog,I catch flies but I’m not a spider,I’m green but I’m not a leaf,I’m an amphibian but I’m not a salamander,I have a long tongue but I’m not a giraffe
+Lion,I represent a star sign but I’m not a bull,I’m found in Africa and Asia but I’m not an elephant,I was a character in The Wizard Of Oz but I’m not a scarecrow,I’m the king of the jungle but I don’t have a crown
+Sink,I have a plug but I’m not a vacuum cleaner,I get filled with water but I’m not a coffee maker,I have a faucet above me but I’m not a bathtub,I can be used to wash dishes but I’m not a dishwasher
+Coin,I have writing on me but I’m not a piece of paper,I’m made of metal but I’m not a robot,I have a head but I’m not lettuce,I can be tossed but I’m not a salad
+Eye,I’m in a socket but I’m not a plug,I have a lens but I’m not a camera,I have a lid but I’m not a can of paint,I have lashes but I don’t have a whip
+Fish,I’m sometimes seen on a hook but I’m not a coat,I have a tail but I’m not a dog,I can be caught in a net but I’m not a butterfly,I live in water but I’m not a frog
+Egg,I can be boiled but I’m not a kettle,I have a shell but I’m not a crab,I can be cracked but I’m not a joke,I come from a chicken but I’m not a nugget
+Dice,I have several faces but I’m not a group of people,I’m covered in spots but I don’t have acne,I’m sometimes blown on but I’m not hot,I’m a cube but I’m not made of ice
+Bone,I’m white but I’m not a sheet of paper,I come in different shapes and sizes but I’m not a snowflake,I can be broken but I’m not a window,I’m sometimes humerus but I’m not funny
+Book,I have letters and numbers but I’m not a computer keyboard,I’m sometimes stored in a case but I’m not a cellphone,I contain paper but I’m not a ring binder,I have a cover but I’m not a pillow
+Gold,I’ve been known to cause a rush but I’m not a Black Friday sale,I can be a bar but I’m not soap,I’m sometimes found in a pot but I’m not stew,I can be a medal but I’m not silver
+Tuna,I come in a can but I’m not something you drink,I can be a steak but I’m not beef,I swim but I’m not a shark,I can be part of sushi but I’m not rice
+Fish,I’m sometimes seen on a hook but I’m not a coat,I have scales but I don’t weigh things,I can be eaten with chips but I’m not salsa,I live in water but I’m not a frog
+Soap,I’m sometimes a bar but I’m not made of gold,I’m sometimes a liquid but I’m not something you drink,I can create bubbles but I’m not a can of soda that’s been shaken,I help you to get clean but I’m not a shower
+Cow,I sometimes have a bell but I’m not a bicycle,I have four legs but I’m not a dog,I’m found on a farm but I’m not a pig,I provide milk but I’m not a coconut
+Leaf,I come in different shapes but I’m not a snowflake,I come in different colors but I’m not a cellphone,I come from a tree but I’m not an apple,I drop but I’m not a tear
+Pear,I am a fruit whose name sounds as though there might be two of me,I’m usually green but I’m not grass,I grow on a tree but I’m not a leaf,I’m a fruit but I’m not an apple
+Sofa,I have a frame but I’m not a bicycle,I’m found in a living room but I’m not a photo,I’m a piece of furniture but I’m not a coffee table,I’m sometimes made of leather but I’m not a jacket
+Map,I can show you where things are but I’m not a tour guide,I have a scale but I don’t weigh things,I contain roads but I’m not a city,I can be on paper or on a phone but I’m not a shopping list
+Bus,I follow a route but I’m not a mailman,I’m red in London but I’m not a telephone box,I’m a mode of transport but I’m not a train,I have wheels that go round and round but I’m not a car
+Tent,I have people sleeping in me but I’m not a hotel room,I’m sometimes made of canvas but I’m not a piece of art,I’m sometimes found in a field but I’m not a cow,I can be put in a bag but I’m not a sandwich
+Snow,I’m sometimes part of a man but I don’t have any skin,I fall but I never get back up,I’m unique but I’m not a fingerprint,If I get warm enough I go away but I’m not a winter wardrobe
+Cat,I have nine lives but I’m not a character in a video game,I like to climb trees but I’m not a child,I have claws but I’m not a bird,I’m a common pet but I’m not a dog
+Bear,I’m one of the animals in The Muppets but I’m not a pig,I have large paws but I’m not a lion,I sometimes live in caves but I’m not a bat,I hibernate but I’m not a squirrel
+Coat,I’m used when it’s cold but I’m not a fire,I sometimes have a hood but I’m not a car,I have sleeves but I’m not a shirt,I might get hung on a rack but I’m not a hat
+Milk,I’m white but I’m not a snowman,I’m wet but I’m not sunscreen,I’m added to breakfast cereal but I’m not sugar,I’m something you can drink but I’m not water
+Corn,I’m yellow but I’m not the sun,I grow in a field but I’m not a sunflower,I go well with butter but I’m not a slice of toast,I’m associated with cob but I’m not a web
+Foot,I come as a pair but I’m not jeans,I have an arch but I’m not a bridge,I have nails but I don’t have a hammer,I’m part of the body but I’m not a hand
+Hand,I can hold things but I’m not a bag,I’m used to write things down but I’m not a pen,I have nails but I’m not a hook,I’m part of your body but I’m not a foot

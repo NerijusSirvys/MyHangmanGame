@@ -93,7 +93,11 @@ namespace MyHangman.Services
             else
             {
                 dto.FailedGuesses++;
-                dto.GameScore -= GameScoreManager.SubtractScoreForFailedLetterGuess(dto.LevelDifficulty);
+
+                if (dto.GameScore >= GameScoreManager.SubtractScoreForFailedLetterGuess(dto.LevelDifficulty))
+                {
+                    dto.GameScore -= GameScoreManager.SubtractScoreForFailedLetterGuess(dto.LevelDifficulty);
+                }
             }
 
             DataAccess.UpdatePlayer(dto);
