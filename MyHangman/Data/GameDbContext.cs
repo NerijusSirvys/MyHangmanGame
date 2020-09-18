@@ -6,7 +6,7 @@ namespace MyHangman.Data
 {
     public class GameDbContext : IdentityDbContext<Player>
     {
-        public GameDbContext() : base("HangmanGameDB")
+        public GameDbContext() : base("LiveWebConnection")
         {
         }
 
