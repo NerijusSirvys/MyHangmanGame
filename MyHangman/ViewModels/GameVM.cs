@@ -46,7 +46,7 @@ namespace MyHangman.ViewModels
         {
             StringBuilder builder = new StringBuilder();
 
-            return builder.Append('?', lenghtOfHiddenAnswer).ToString();
+            return builder.Append('_', lenghtOfHiddenAnswer).ToString();
         }
     }
 }
