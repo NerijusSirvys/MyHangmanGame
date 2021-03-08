@@ -1,7 +1,8 @@
 # MyHangmanGame
-Simple hangman web game using ASP.Net MVC5 and Entity Framework
+Simple hangman web game using ASP.Net MVC5, HTML5, CSS3 and Entity Framework.
+Account security provided by Identity 2.
 
-My first practice project that is complete and live on Azure.
+
 
 # Description
 - Player register new account or login to existing. Registration is very basic and only purpose of it is to save player progress and requires only user name and password
